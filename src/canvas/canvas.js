@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Cell from './canvas-cell'
+import LandscapeContainer from './canvas-landscapes-container'
 
 @connect((state, props) => {
     return {
@@ -31,6 +32,7 @@ class Canvas extends React.Component {
         return (
            <div style={canvasStyle}>
                {cells}
+               <LandscapeContainer />
            </div>
         );
     }
