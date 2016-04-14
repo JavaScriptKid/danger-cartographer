@@ -1,4 +1,30 @@
 * {
-    box-sizing:border-box;
+    box-sizing: border-box;
 }
+
 @import 'reset';
+
+
+.landscape-placement {
+    svg {
+        display:block;
+    }
+}
+.placement-corners-container {
+    position:absolute;
+    left:0;right:0;bottom:0;top:0;
+
+    .placement-corner-top-left,
+    .placement-corner-top-right,
+    .placement-corner-bottom-left,
+    .placement-corner-bottom-right{
+        position:absolute;
+        background: red;
+        //width : set by inline state javascript
+    }
+
+    .placement-corner-top-left { top:0; left:0; }
+    .placement-corner-top-right { top:0; right:0; }
+    .placement-corner-bottom-left { bottom:0; left:0; }
+    .placement-corner-bottom-right{ bottom:0; right:0; }
+}
