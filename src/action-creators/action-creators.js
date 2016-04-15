@@ -8,3 +8,13 @@ export function setViewSettingsValue(changes={}) {
         }
     });
 }
+
+
+export function setCursorValue(changes={}) {
+    store.dispatch({
+        type: "SET_CURSOR_VALUE",
+        payload: {
+            changes: {...changes}
+        }
+    });
+}

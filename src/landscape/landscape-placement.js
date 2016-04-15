@@ -2,27 +2,47 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import {rectangle} from '../skins/skins'
+import PlacementCorner from './placement-corner'
+
+import {setCursorValue} from '../action-creators/action-creators'
 
 @connect((state, props) => {
     return {
-        cellSize: state.viewSettings.cellSize
+        cellSize: state.viewSettings.cellSize,
+        xDistance: state.cursor.xDistance,
+        yDistance: state.cursor.yDistance,
+        //xStart: state.cursor.xStart,
+        //yStart: state.cursor.yStart
     }
 })
 
 class LandscapePlacement extends React.Component {
 
 
-    renderCorners() {
-        const cornerStyle = {
-            width: this.props.cellSize / 2,
-            height: this.props.cellSize / 2
+    componentWillUpdate(newProps) {
+        if (this.props.xDistance != newProps.xDistance || this.props.yDistance != newProps.yDistance) {
+            if (newProps.xDistance > this.props.cellSize / 2) {
+                console.log('increase width')
+            }
+            if (newProps.xDistance < this.props.cellSize / -2) {
+                console.log('decrease width')
+            }
+            if (newProps.yDistance > this.props.cellSize / 2) {
+                console.log('increase height')
+            }
+            if (newProps.yDistance < this.props.cellSize / -2) {
+                console.log('decrease height')
+            }
         }
+    }
+
+    renderCorners() {
         return (
             <div className="placement-corners-container">
-                <div style={cornerStyle} className="placement-corner-top-left"></div>
-                <div style={cornerStyle} className="placement-corner-top-right"></div>
-                <div style={cornerStyle} className="placement-corner-bottom-left"></div>
-                <div style={cornerStyle} className="placement-corner-bottom-right"></div>
+                <PlacementCorner placementId={this.props.id} class="js-placement-corner placement-corner-top-left" />
+                <PlacementCorner placementId={this.props.id} class="js-placement-corner placement-corner-top-right" />
+                <PlacementCorner placementId={this.props.id} class="js-placement-corner placement-corner-bottom-left" />
+                <PlacementCorner placementId={this.props.id} class="js-placement-corner placement-corner-bottom-right" />
             </div>
         )
     }

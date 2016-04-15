@@ -15,7 +15,7 @@ class CanvasLandscapesContainer extends React.Component {
         const placements = Object.keys(this.props.landscapePlacements).map(p => {
             const model = this.props.landscapePlacements[p];
             return (
-                <LandscapePlacement key={p} model={model} />
+                <LandscapePlacement key={p} id={p} model={model} />
             )
         });
         const containerStyle = {

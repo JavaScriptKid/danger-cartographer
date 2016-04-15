@@ -14,14 +14,18 @@
     position:absolute;
     left:0;right:0;bottom:0;top:0;
 
+
     .placement-corner-top-left,
     .placement-corner-top-right,
     .placement-corner-bottom-left,
     .placement-corner-bottom-right{
         position:absolute;
         background: red;
-        visibility: hidden;
+        opacity: 0;
         //width : set by inline state javascript
+        &:hover {
+            opacity: 1;
+        }
     }
 
     .placement-corner-top-left { top:0; left:0; }

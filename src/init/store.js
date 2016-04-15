@@ -9,6 +9,13 @@ const store = createStore({
     viewSettings: {
         cellSize: 50
     },
+    cursor: {
+        isDragging: false,
+        xStart: null,
+        yStart: null,
+        xDistance: null,
+        yDistance: null
+    },
     landscapePlacements: {
         "xyz12": {
             x: 0,

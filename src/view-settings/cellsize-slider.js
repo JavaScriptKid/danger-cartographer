@@ -11,7 +11,6 @@ import {setViewSettingsValue} from '../action-creators/action-creators'
 class CellSizeSlider extends React.Component {
 
     handleChange() {
-        console.log('wahoo', this.refs.slider.value);
         setViewSettingsValue({
             cellSize: this.refs.slider.value
         })
