@@ -31,7 +31,7 @@ const store = createStore({
             }
         },
         "xyz13": {
-            x: 1,
+            x: 2,
             y: 1,
             width: 4,
             height: 3,

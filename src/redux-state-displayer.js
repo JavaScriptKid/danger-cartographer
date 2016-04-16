@@ -10,9 +10,15 @@ import { connect } from 'react-redux'
 class ReduxStateDisplayer extends React.Component {
 
     render() {
+
+        const include = {
+          //...this.props.reduxState.landscapePlacements,
+          //...this.props.reduxState.cursor,
+        };
+
         return (
             <pre>
-                { JSON.stringify(this.props.reduxState.cursor, null, 2) }
+                { JSON.stringify(include, null, 2) }
             </pre>
         );
     }

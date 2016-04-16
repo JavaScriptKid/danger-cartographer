@@ -13,7 +13,13 @@ import {setCursorValue, mergeLandscape} from '../action-creators/action-creators
         dragCellX: state.cursor.dragCellX,
         dragCellY: state.cursor.dragCellY,
         dragCorner: state.cursor.dragCorner,
-        isDragging: state.cursor.isDragging
+        isDragging: state.cursor.isDragging,
+
+        xDistance: state.cursor.xDistance,
+        yDistance: state.cursor.yDistance,
+
+        xStart: state.cursor.xStart,
+        yStart: state.cursor.yStart
     }
 })
 
@@ -22,50 +28,67 @@ class LandscapePlacement extends React.Component {
 
     componentWillReceiveProps(newProps) {
         if (newProps.isSelected) {
+
+
+            /* THIS IS A GRAB */
+            if (!newProps.dragCorner.length) {
+
+                if (newProps.xDistance >= this.props.cellSize) {
+                    setCursorValue({ xDistance: 0, xStart: newProps.xStart + newProps.xDistance });
+                    mergeLandscape(this.props.id, {
+                        x: newProps.model.x+1
+                    });
+                    return;
+                }
+
+                if (newProps.xDistance <= -this.props.cellSize) {
+                    setCursorValue({ xDistance: 0, xStart: newProps.xStart + newProps.xDistance });
+                    mergeLandscape(this.props.id, {
+                        x: (newProps.model.x>0) ? newProps.model.x-1: 0
+                    });
+                    return;
+                }
+
+                if (newProps.yDistance >= this.props.cellSize) {
+                    setCursorValue({ yDistance: 0, yStart: newProps.yStart + newProps.yDistance });
+                    mergeLandscape(this.props.id, {
+                        y: newProps.model.y+1
+                    });
+                    return;
+                }
+
+                if (newProps.yDistance <= -this.props.cellSize) {
+                    setCursorValue({ yDistance: 0, yStart: newProps.yStart + newProps.yDistance });
+                    mergeLandscape(this.props.id, {
+                        y: newProps.model.y-1
+                    });
+                    return;
+                }
+
+                return;
+            }
+
+
             if (newProps.dragCellX != this.props.dragCellX || newProps.dragCellY != this.props.dragCellY) {
 
                 const x = newProps.model.x;
                 const y = newProps.model.y;
-                const cellsBeforeX = x-1;
-                const cellsBeforeY = y-1;
                 const newDestX = newProps.dragCellX;
                 const newDestY = newProps.dragCellY;
 
-
-                /* THIS IS A GRAB */
-                if (!newProps.dragCorner.length) {
-                    console.log(newDestX, newDestY);
-
-                    //if (newProps.dragCellX > this.props.dragCellX) {
-                    //    mergeLandscape(this.props.id, { x: x+1 })
-                    //}
-                    //if (newProps.dragCellX < this.props.dragCellX) {
-                    //    mergeLandscape(this.props.id, { x: x-1 })
-                    //}
-                    //if (newProps.dragCellY > this.props.dragCellY) {
-                    //    mergeLandscape(this.props.id, { y: y+1 })
-                    //}
-                    //if (newProps.dragCellY < this.props.dragCellY) {
-                    //    mergeLandscape(this.props.id, { y: y-1 })
-                    //}
-
-
-                    return;
-                }
+                //console.log(newDestX, newDestY)
 
                 /* THIS IS A CORNER DRAG */
 
                 if (this.props.dragCorner.indexOf('right') > -1) {
-                    const newW = newDestX - (x - cellsBeforeX);
-                    mergeLandscape(this.props.id, {
-                        width: newW,
-                    })
-                }
 
-                if (this.props.dragCorner.indexOf('bottom') > -1) {
-                    const newH = newDestY - (y - cellsBeforeY);
+                    const newW = newDestX - x+1;
+                    const newH = newDestY - y+1;
+
+
                     mergeLandscape(this.props.id, {
-                        height: newH,
+                        width: (newW > 1) ? newW : 1,
+                        height: (newH > 1) ? newH : 1
                     })
                 }
 
@@ -102,6 +125,7 @@ class LandscapePlacement extends React.Component {
             pointerEvents: this.props.isDragging ? "none" : "all",
             left: model.x * this.props.cellSize,
             top: model.y * this.props.cellSize
+            //transform: `translate3d(${this.props.xDistance}px, ${this.props.yDistance}px, 0)`
         };
         const width = (model.width * this.props.cellSize);
         const height = (model.height * this.props.cellSize);

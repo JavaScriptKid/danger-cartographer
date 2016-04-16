@@ -13,7 +13,7 @@ class Cell extends React.Component {
     handleMouseOver() {
         if (this.props.isDragging) {
             /* You are dragging and on these coords */
-            //console.log(this.props.x, this.props.y);
+            //console.log(this.props.x, this.props.y);\
             setCursorValue({
                 dragCellX: this.props.x,
                 dragCellY: this.props.y,
@@ -26,8 +26,8 @@ class Cell extends React.Component {
             background: '#ddd',
             width: this.props.cellSize,
             height: this.props.cellSize,
-            left: ((this.props.x-1) * this.props.cellSize),
-            top: ((this.props.y-1) * this.props.cellSize),
+            left: ((this.props.x) * this.props.cellSize),
+            top: ((this.props.y) * this.props.cellSize),
             position: 'absolute',
             borderRight: '1px solid #ccc',
             borderBottom: '1px solid #ccc',

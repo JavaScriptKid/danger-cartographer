@@ -3,7 +3,7 @@ import {setCursorValue} from './action-creators/action-creators'
 
 export function startLandscapeDragBindings() {
 
-    $('body').on('mousedown', '.js-placement-corner', function(e) {
+    $('body').on('mousedown', '.placement-corners-container', function(e) {
         setCursorValue({
             xStart: e.clientX,
             yStart: e.clientY
@@ -16,8 +16,8 @@ export function startLandscapeDragBindings() {
         if (cursor.isDragging) {
             //console.log('moving')
             setCursorValue({
-                //xDistance: e.clientX - cursor.xStart,
-                //yDistance: e.clientY - cursor.yStart
+                xDistance: e.clientX - cursor.xStart,
+                yDistance: e.clientY - cursor.yStart
             });
         }
     });
@@ -29,9 +29,9 @@ export function startLandscapeDragBindings() {
                 draggingId: null,
                 dragCellX: null,
                 dragCellY: null,
-                dragCorner: []
-                //xDistance: null,
-                //yDistance: null
+                dragCorner: [],
+                xDistance: 0,
+                yDistance: 0
             })
         }
     });
