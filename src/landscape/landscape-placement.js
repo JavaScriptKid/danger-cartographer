@@ -12,7 +12,8 @@ import {setCursorValue, mergeLandscape} from '../action-creators/action-creators
         isSelected: state.cursor.draggingId == props.id,
         dragCellX: state.cursor.dragCellX,
         dragCellY: state.cursor.dragCellY,
-        dragCorner: state.cursor.dragCorner
+        dragCorner: state.cursor.dragCorner,
+        isDragging: state.cursor.isDragging
     }
 })
 
@@ -23,13 +24,36 @@ class LandscapePlacement extends React.Component {
         if (newProps.isSelected) {
             if (newProps.dragCellX != this.props.dragCellX || newProps.dragCellY != this.props.dragCellY) {
 
-                const x = this.props.model.x;
-                const y = this.props.model.y;
+                const x = newProps.model.x;
+                const y = newProps.model.y;
                 const cellsBeforeX = x-1;
                 const cellsBeforeY = y-1;
                 const newDestX = newProps.dragCellX;
                 const newDestY = newProps.dragCellY;
 
+
+                /* THIS IS A GRAB */
+                if (!newProps.dragCorner.length) {
+                    console.log(newDestX, newDestY);
+
+                    //if (newProps.dragCellX > this.props.dragCellX) {
+                    //    mergeLandscape(this.props.id, { x: x+1 })
+                    //}
+                    //if (newProps.dragCellX < this.props.dragCellX) {
+                    //    mergeLandscape(this.props.id, { x: x-1 })
+                    //}
+                    //if (newProps.dragCellY > this.props.dragCellY) {
+                    //    mergeLandscape(this.props.id, { y: y+1 })
+                    //}
+                    //if (newProps.dragCellY < this.props.dragCellY) {
+                    //    mergeLandscape(this.props.id, { y: y-1 })
+                    //}
+
+
+                    return;
+                }
+
+                /* THIS IS A CORNER DRAG */
 
                 if (this.props.dragCorner.indexOf('right') > -1) {
                     const newW = newDestX - (x - cellsBeforeX);
@@ -49,12 +73,22 @@ class LandscapePlacement extends React.Component {
         }
     }
 
+    handleGrab() {
+        setCursorValue({
+            isDragging: true,
+            draggingId: this.props.id,
+            dragCorner: []
+        })
+    }
+
+
     renderCorners() {
+        //OTHER CORNERS ARE `NICE TO HAVE`
         return (
             <div className="placement-corners-container">
-                <PlacementCorner placementId={this.props.id} corner={["top", "left"]} class="js-placement-corner placement-corner-top-left" />
-                <PlacementCorner placementId={this.props.id} corner={["top", "right"]} class="js-placement-corner placement-corner-top-right" />
-                <PlacementCorner placementId={this.props.id} corner={["bottom", "left"]} class="js-placement-corner placement-corner-bottom-left" />
+                {/*<PlacementCorner placementId={this.props.id} corner={["top", "left"]} class="js-placement-corner placement-corner-top-left" />*/}
+                {/*<PlacementCorner placementId={this.props.id} corner={["top", "right"]} class="js-placement-corner placement-corner-top-right" />*/}
+                {/*<PlacementCorner placementId={this.props.id} corner={["bottom", "left"]} class="js-placement-corner placement-corner-bottom-left" />*/}
                 <PlacementCorner placementId={this.props.id} corner={["bottom", "right"]} class="js-placement-corner placement-corner-bottom-right" />
             </div>
         )
@@ -65,13 +99,14 @@ class LandscapePlacement extends React.Component {
 
         const style = {
             position: "absolute",
+            pointerEvents: this.props.isDragging ? "none" : "all",
             left: model.x * this.props.cellSize,
             top: model.y * this.props.cellSize
         };
         const width = (model.width * this.props.cellSize);
         const height = (model.height * this.props.cellSize);
         return (
-            <div style={style} className="landscape-placement">
+            <div style={style} className="landscape-placement" onMouseDown={::this.handleGrab}>
                 {rectangle(width, height, model.skin.fill1)}
                 {this.renderCorners()}
             </div>

@@ -29,6 +29,7 @@ export function startLandscapeDragBindings() {
                 draggingId: null,
                 dragCellX: null,
                 dragCellY: null,
+                dragCorner: []
                 //xDistance: null,
                 //yDistance: null
             })
