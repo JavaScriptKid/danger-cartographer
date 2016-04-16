@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { setCursorValue } from '../action-creators/action-creators'
 
 @connect((state, props) => {
     return {
@@ -12,7 +13,11 @@ class Cell extends React.Component {
     handleMouseOver() {
         if (this.props.isDragging) {
             /* You are dragging and on these coords */
-            console.log(this.props.x, this.props.y);
+            //console.log(this.props.x, this.props.y);
+            setCursorValue({
+                dragCellX: this.props.x,
+                dragCellY: this.props.y,
+            })
         }
     }
 

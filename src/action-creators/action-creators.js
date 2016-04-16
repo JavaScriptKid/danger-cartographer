@@ -18,3 +18,13 @@ export function setCursorValue(changes={}) {
         }
     });
 }
+
+export function mergeLandscape(id="", changes={}) {
+    store.dispatch({
+        type: "MERGE_LANDSCAPE",
+        payload: {
+            key: id,
+            changes: {...changes}
+        }
+    });
+}

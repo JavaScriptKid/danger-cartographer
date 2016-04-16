@@ -16,8 +16,8 @@ export function startLandscapeDragBindings() {
         if (cursor.isDragging) {
             //console.log('moving')
             setCursorValue({
-                xDistance: e.clientX - cursor.xStart,
-                yDistance: e.clientY - cursor.yStart
+                //xDistance: e.clientX - cursor.xStart,
+                //yDistance: e.clientY - cursor.yStart
             });
         }
     });
@@ -27,8 +27,10 @@ export function startLandscapeDragBindings() {
             setCursorValue({
                 isDragging: false,
                 draggingId: null,
-                xDistance: null,
-                yDistance: null
+                dragCellX: null,
+                dragCellY: null,
+                //xDistance: null,
+                //yDistance: null
             })
         }
     });
