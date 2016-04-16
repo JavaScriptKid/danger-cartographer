@@ -31,8 +31,8 @@ class Canvas extends React.Component {
 
         return (
            <div style={canvasStyle}>
-               {cells}
                <LandscapeContainer />
+               {cells}
            </div>
         );
     }

@@ -20,20 +20,22 @@ class LandscapePlacement extends React.Component {
 
 
     componentWillUpdate(newProps) {
-        if (this.props.xDistance != newProps.xDistance || this.props.yDistance != newProps.yDistance) {
-            if (newProps.xDistance > this.props.cellSize / 2) {
-                console.log('increase width')
-            }
-            if (newProps.xDistance < this.props.cellSize / -2) {
-                console.log('decrease width')
-            }
-            if (newProps.yDistance > this.props.cellSize / 2) {
-                console.log('increase height')
-            }
-            if (newProps.yDistance < this.props.cellSize / -2) {
-                console.log('decrease height')
-            }
-        }
+        /* LOSE THIS STUFF. DETECT THE MOUSEOVER OF A CELL USING REACT BINDING */
+        /* REPORT WHICH X/Y IS BEING MOUSEOVERED, ADJUST PLACEMENT TO COVER THAT CELL */
+        //if (this.props.xDistance != newProps.xDistance || this.props.yDistance != newProps.yDistance) {
+        //    if (newProps.xDistance > this.props.cellSize / 2) {
+        //        console.log('increase width')
+        //    }
+        //    if (newProps.xDistance < this.props.cellSize / -2) {
+        //        console.log('decrease width')
+        //    }
+        //    if (newProps.yDistance > this.props.cellSize / 2) {
+        //        console.log('increase height')
+        //    }
+        //    if (newProps.yDistance < this.props.cellSize / -2) {
+        //        console.log('decrease height')
+        //    }
+        //}
     }
 
     renderCorners() {

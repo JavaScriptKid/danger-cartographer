@@ -3,10 +3,18 @@ import { connect } from 'react-redux'
 
 @connect((state, props) => {
     return {
-        cellSize: state.viewSettings.cellSize
+        cellSize: state.viewSettings.cellSize,
+        isDragging: state.cursor.isDragging
     }
 })
 class Cell extends React.Component {
+
+    handleMouseOver() {
+        if (this.props.isDragging) {
+            /* You are dragging and on these coords */
+            console.log(this.props.x, this.props.y);
+        }
+    }
 
     render() {
         const cellStyle = {
@@ -20,7 +28,7 @@ class Cell extends React.Component {
             borderBottom: '1px solid #ccc',
         };
         return (
-            <div style={cellStyle}></div>
+            <div style={cellStyle} onMouseEnter={::this.handleMouseOver}></div>
         );
     }
 }
