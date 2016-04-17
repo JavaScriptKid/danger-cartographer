@@ -5,6 +5,13 @@
 @import 'reset';
 
 
+
+.svg-viewer-container {
+    svg {
+        overflow:visible;
+    }
+}
+
 @keyframes selected-glow {
     0% {border-color:cyan}
     100% {border-color:lime}
