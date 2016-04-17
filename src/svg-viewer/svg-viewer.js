@@ -54,9 +54,9 @@ class SvgViewer extends React.Component {
                 skinSvg = fullTable(16, width, height, model.skin.fill1);
             }
 
-            //if (model.skin.id == "building") {
-            //    skinSvg = building(16, width, height, model.skin.fill1);
-            //}
+            if (model.skin.id == "building") {
+                skinSvg = building(16, width, height, model.skin.fill1);
+            }
 
             const style = {
                 position: 'relative',
