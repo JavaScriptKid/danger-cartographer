@@ -3,7 +3,7 @@ import createStore from './create-store'
 const store = createStore({
     details: {
         width: 13,
-        height: 7
+        height: 14
         //backgroundUrl: ""
     },
     viewSettings: {
@@ -46,14 +46,42 @@ const store = createStore({
             }
         },
         "objectB": {
-            x: 6,
-            y: 3,
+            x: 3,
+            y: 5,
             width: 2, //Must be this size
             height: 2, //Must be this size
             type: "object",
             skin: {
                 id: "fulltable",
                 fill1: "#8B572A",
+                fill2: null,
+                fill3: null,
+                fill4: null
+            }
+        },
+        "objectC": {
+            x: 7,
+            y: 1,
+            width: 4, //Must be this size
+            height: 8, //Must be this size
+            type: "object",
+            skin: {
+                id: "building",
+                fill1: "rgb(167, 78, 63)",
+                fill2: null,
+                fill3: null,
+                fill4: null
+            }
+        },
+        "objectD": {
+            x: 3,
+            y: 1,
+            width: 4, //Must be this size
+            height: 8, //Must be this size
+            type: "object",
+            skin: {
+                id: "building",
+                fill1: "rgb(167, 78, 63)",
                 fill2: null,
                 fill3: null,
                 fill4: null
