@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import MarkupBtn from './markup-btn'
 
 //Lets get ugly for a second
-import {rectangle, sidetable, fullTable, building} from '../skins/skins'
+import {rectangle, sidetable, fullTable, building, coffeeCup} from '../skins/skins'
 
 
 @connect((state, props) => {
@@ -56,6 +56,10 @@ class SvgViewer extends React.Component {
 
             if (model.skin.id == "building") {
                 skinSvg = building(16, width, height, model.skin.fill1);
+            }
+
+            if (model.skin.id == "coffeeCup") {
+                skinSvg = coffeeCup(16, width, height, model.skin.fill1);
             }
 
             const style = {

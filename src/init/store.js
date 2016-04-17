@@ -87,6 +87,21 @@ const store = createStore({
                 fill4: null
             }
         },
+        "objectE": {
+            x: 1,
+            y: 1,
+            width: 1, //Must be this size
+            height: 1, //Must be this size
+            type: "object",
+            skin: {
+                id: "coffeeCup",
+                fill1: "#B27D4D",
+                fill2: null,
+                fill3: null,
+                fill4: null
+            }
+        },
+
         "xyz13": {
             x: 2,
             y: 1,

@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import {rectangle, sidetable, fullTable, building} from '../skins/skins'
+import {rectangle, sidetable, fullTable, building, coffeeCup} from '../skins/skins'
 import PlacementCorner from './placement-corner'
 
 import {setCursorValue, mergeLandscape} from '../action-creators/action-creators'
@@ -152,6 +152,10 @@ class LandscapePlacement extends React.Component {
 
         if (this.props.model.skin.id == "building") {
             return building(this.props.cellSize, width, height, this.props.model.skin.fill1);
+        }
+
+        if (this.props.model.skin.id == "coffeeCup") {
+            return coffeeCup(this.props.cellSize, width, height, this.props.model.skin.fill1);
         }
     }
 
