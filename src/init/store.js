@@ -25,7 +25,7 @@ const store = createStore({
             height: 1,
             skin: {
                 id: "rectangle",
-                fill1: "#ff00ff",
+                fill1: "#BD10E0",
                 fill2: null,
                 fill3: null,
                 fill4: null

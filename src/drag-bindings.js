@@ -37,7 +37,8 @@ export function startLandscapeDragBindings() {
     });
 
     $(document).on('keydown', function(e) {
-        if (e.keyCode == 27) {
+        if (e.keyCode == 27 || e.keyCode == 8) {
+            e.preventDefault();
             deletePlacement( store.getState().cursor.selectedElement )
         }
     })
