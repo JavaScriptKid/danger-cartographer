@@ -14,6 +14,8 @@ export default function(data) {
         ...cursorReducer,
     });
 
-    var store = createStore(reducer, data);
+    var store = createStore(reducer, data,
+        window.devToolsExtension ? window.devToolsExtension() : undefined
+    );
     return store
 }

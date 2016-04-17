@@ -1,6 +1,6 @@
-import {mergeLandscape} from '../action-creators/action-creators'
+import {mergeLandscape, setCursorValue} from '../action-creators/action-creators'
 
-export default function(options={}) {
+export default function(options={}, setAsActive=true) {
     const useOptions = {
         x:0,
         y:0,
@@ -15,5 +15,11 @@ export default function(options={}) {
     };
     const id = "placement_"+Date.now();
 
-    mergeLandscape(id, useOptions)
+    mergeLandscape(id, useOptions);
+
+    if (setAsActive) {
+        setCursorValue({
+            selectedElement: id
+        })
+    }
 }

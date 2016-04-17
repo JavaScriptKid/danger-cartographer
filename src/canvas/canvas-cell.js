@@ -23,11 +23,12 @@ class Cell extends React.Component {
     }
 
     handleDoubleClick() {
-        //console.log('DOUBLE CLICK', this.props.x, this.props.y);
         createPlacement({
             x: this.props.x,
             y: this.props.y
-        })
+        });
+        /* Now set it to active */
+
     }
     render() {
         const cellStyle = {
