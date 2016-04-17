@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Canvas from './canvas/canvas'
+import Inspector from './inspector/inspector'
 import CellSizeSlider from './view-settings/cellsize-slider'
 import {startLandscapeDragBindings} from './drag-bindings'
 import ReduxStateDisplayer from './redux-state-displayer'
@@ -20,8 +21,10 @@ class App extends React.Component {
     render() {
         return (
            <div>
-                <CellSizeSlider />
-                <Canvas />
+               <CellSizeSlider />
+               <Canvas />
+               <Inspector />
+
                <ReduxStateDisplayer />
            </div>
         );
