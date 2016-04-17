@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-
+import MarkupBtn from './markup-btn'
 
 //Lets get ugly for a second
 import {rectangle, sidetable, fullTable, building} from '../skins/skins'
@@ -73,7 +73,10 @@ class SvgViewer extends React.Component {
 
         return (
             <div className="svg-viewer-container">
-               <svg  width={this.props.mapWidthInPx} height={this.props.mapHeightInPx}>
+
+                <MarkupBtn />
+
+               <svg id="map-svg" map-svgwidth={this.props.mapWidthInPx} height={this.props.mapHeightInPx} xmlns="http://www.w3.org/2000/svg">
                    {placements}
                </svg>
             </div>
