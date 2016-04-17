@@ -3,7 +3,7 @@ import createStore from './create-store'
 const store = createStore({
     details: {
         width: 13,
-        height: 14
+        height: 7
         //backgroundUrl: ""
     },
     viewSettings: {
