@@ -8,6 +8,9 @@ export function landscapePlacements(state = {}, action) {
                 ...action.payload.changes
             });
 
+        case "REMOVE_LANDSCAPE":
+            return removeNode(state, action.payload.key);
+
         default:
             return state;
     }

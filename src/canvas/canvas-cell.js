@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { setCursorValue } from '../action-creators/action-creators'
+import createPlacement from '../landscape/create-placement'
+
 
 @connect((state, props) => {
     return {
@@ -13,7 +15,6 @@ class Cell extends React.Component {
     handleMouseOver() {
         if (this.props.isDragging) {
             /* You are dragging and on these coords */
-            //console.log(this.props.x, this.props.y);\
             setCursorValue({
                 dragCellX: this.props.x,
                 dragCellY: this.props.y,
@@ -21,6 +22,13 @@ class Cell extends React.Component {
         }
     }
 
+    handleDoubleClick() {
+        //console.log('DOUBLE CLICK', this.props.x, this.props.y);
+        createPlacement({
+            x: this.props.x,
+            y: this.props.y
+        })
+    }
     render() {
         const cellStyle = {
             background: '#ddd',
@@ -33,7 +41,7 @@ class Cell extends React.Component {
             borderBottom: '1px solid #ccc',
         };
         return (
-            <div style={cellStyle} onMouseEnter={::this.handleMouseOver}></div>
+            <div style={cellStyle} onMouseEnter={::this.handleMouseOver} onDoubleClick={::this.handleDoubleClick}></div>
         );
     }
 }

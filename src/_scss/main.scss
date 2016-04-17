@@ -5,9 +5,21 @@
 @import 'reset';
 
 
+@keyframes selected-glow {
+    0% {border-color:cyan}
+    100% {border-color:lime}
+}
 .landscape-placement {
     z-index:10;
     /* position is absolute (inline-style) */
+
+    &.selected-placement {
+        z-index:11;
+        border: 2px solid cyan;
+        animation: selected-glow 1s infinite;
+        animation-direction: alternate;
+    }
+
     svg {
         display:block;
     }

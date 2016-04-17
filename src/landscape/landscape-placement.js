@@ -9,7 +9,7 @@ import {setCursorValue, mergeLandscape} from '../action-creators/action-creators
 @connect((state, props) => {
     return {
         cellSize: state.viewSettings.cellSize,
-        isSelected: state.cursor.draggingId == props.id,
+        isSelectedDragging: state.cursor.draggingId == props.id,
         dragCellX: state.cursor.dragCellX,
         dragCellY: state.cursor.dragCellY,
         dragCorner: state.cursor.dragCorner,
@@ -19,7 +19,9 @@ import {setCursorValue, mergeLandscape} from '../action-creators/action-creators
         yDistance: state.cursor.yDistance,
 
         xStart: state.cursor.xStart,
-        yStart: state.cursor.yStart
+        yStart: state.cursor.yStart,
+
+        isSelectedElement: state.cursor.selectedElement == props.id
     }
 })
 
@@ -27,7 +29,7 @@ class LandscapePlacement extends React.Component {
 
 
     componentWillReceiveProps(newProps) {
-        if (newProps.isSelected) {
+        if (newProps.isSelectedDragging) {
 
 
             /* THIS IS A GRAB */
@@ -60,7 +62,7 @@ class LandscapePlacement extends React.Component {
                 if (newProps.yDistance <= -this.props.cellSize) {
                     setCursorValue({ yDistance: 0, yStart: newProps.yStart + newProps.yDistance });
                     mergeLandscape(this.props.id, {
-                        y: newProps.model.y-1
+                        y: (newProps.model.y>0) ? newProps.model.y-1 : 0
                     });
                     return;
                 }
@@ -97,11 +99,19 @@ class LandscapePlacement extends React.Component {
     }
 
     handleGrab() {
+
+        /* select placement */
         setCursorValue({
+            selectedElement: this.props.id,
+
             isDragging: true,
             draggingId: this.props.id,
             dragCorner: []
         })
+    }
+
+    handleDoubleClick() {
+        console.log('click')
     }
 
 
@@ -129,8 +139,10 @@ class LandscapePlacement extends React.Component {
         };
         const width = (model.width * this.props.cellSize);
         const height = (model.height * this.props.cellSize);
+        const selectedClass = this.props.isSelectedElement ? "selected-placement" : "";
+
         return (
-            <div style={style} className="landscape-placement" onMouseDown={::this.handleGrab}>
+            <div style={style} className={`landscape-placement ${selectedClass}`} onMouseDown={::this.handleGrab}>
                 {rectangle(width, height, model.skin.fill1)}
                 {this.renderCorners()}
             </div>

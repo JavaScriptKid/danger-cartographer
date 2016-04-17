@@ -28,3 +28,12 @@ export function mergeLandscape(id="", changes={}) {
         }
     });
 }
+
+export function deletePlacement(id="") {
+    store.dispatch({
+        type: "REMOVE_LANDSCAPE",
+        payload: {
+            key: id,
+        }
+    });
+}

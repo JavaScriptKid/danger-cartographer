@@ -10,6 +10,7 @@ const store = createStore({
         cellSize: 50
     },
     cursor: {
+        selectedElement: "xyz12", //null
         isDragging: false,
         xStart: null,
         yStart: null,

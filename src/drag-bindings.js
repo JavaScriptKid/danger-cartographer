@@ -1,5 +1,5 @@
 import store from './init/store'
-import {setCursorValue} from './action-creators/action-creators'
+import {setCursorValue, deletePlacement} from './action-creators/action-creators'
 
 export function startLandscapeDragBindings() {
 
@@ -35,6 +35,12 @@ export function startLandscapeDragBindings() {
             })
         }
     });
+
+    $(document).on('keydown', function(e) {
+        if (e.keyCode == 27) {
+            deletePlacement( store.getState().cursor.selectedElement )
+        }
+    })
 }
 
 export function removeLandscapeDragBindings() {
