@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import {rectangle, table} from '../skins/skins'
+import {rectangle, sidetable} from '../skins/skins'
 import PlacementCorner from './placement-corner'
 
 import {setCursorValue, mergeLandscape} from '../action-creators/action-creators'
@@ -117,6 +117,12 @@ class LandscapePlacement extends React.Component {
 
     renderCorners() {
         //OTHER CORNERS ARE `NICE TO HAVE`
+
+        /* Dont allow resize for Objects */
+        if (this.props.model.type == "object") {
+            return null;
+        }
+
         return (
             <div className="placement-corners-container">
                 {/*<PlacementCorner placementId={this.props.id} corner={["top", "left"]} class="js-placement-corner placement-corner-top-left" />*/}
@@ -136,8 +142,8 @@ class LandscapePlacement extends React.Component {
             return rectangle(width, height, this.props.model.skin.fill1);
         }
 
-        if (this.props.model.skin.id == "table") {
-            return table(this.props.cellSize, width, height, this.props.model.skin.fill1);
+        if (this.props.model.skin.id == "sidetable") {
+            return sidetable(this.props.cellSize, width, height, this.props.model.skin.fill1);
         }
     }
 
@@ -149,6 +155,8 @@ class LandscapePlacement extends React.Component {
             pointerEvents: this.props.isDragging ? "none" : "all",
             left: model.x * this.props.cellSize,
             top: model.y * this.props.cellSize
+            //width: model.width * this.props.cellSize,
+            //height: model.height * this.props.cellSize
             //transform: `translate3d(${this.props.xDistance}px, ${this.props.yDistance}px, 0)`
         };
 
