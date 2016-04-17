@@ -12,7 +12,7 @@ class ReduxStateDisplayer extends React.Component {
     render() {
 
         const include = {
-          //...this.props.reduxState.landscapePlacements,
+          ...this.props.reduxState.landscapePlacements,
           //...this.props.reduxState.cursor,
         };
 

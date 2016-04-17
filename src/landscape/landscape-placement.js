@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import {rectangle} from '../skins/skins'
+import {rectangle, table} from '../skins/skins'
 import PlacementCorner from './placement-corner'
 
 import {setCursorValue, mergeLandscape} from '../action-creators/action-creators'
@@ -127,6 +127,20 @@ class LandscapePlacement extends React.Component {
         )
     }
 
+    renderSkin() {
+        const width = (this.props.model.width * this.props.cellSize);
+        const height = (this.props.model.height * this.props.cellSize);
+
+
+        if (this.props.model.skin.id == "rectangle") {
+            return rectangle(width, height, this.props.model.skin.fill1);
+        }
+
+        if (this.props.model.skin.id == "table") {
+            return table(this.props.cellSize, width, height, this.props.model.skin.fill1);
+        }
+    }
+
     render() {
         const model = this.props.model;
 
@@ -137,13 +151,15 @@ class LandscapePlacement extends React.Component {
             top: model.y * this.props.cellSize
             //transform: `translate3d(${this.props.xDistance}px, ${this.props.yDistance}px, 0)`
         };
-        const width = (model.width * this.props.cellSize);
-        const height = (model.height * this.props.cellSize);
+
         const selectedClass = this.props.isSelectedElement ? "selected-placement" : "";
+        const objectClass = this.props.model.type == "object" ? "object-placement" : "";
+
+
 
         return (
-            <div style={style} className={`landscape-placement ${selectedClass}`} onMouseDown={::this.handleGrab}>
-                {rectangle(width, height, model.skin.fill1)}
+            <div style={style} className={`landscape-placement ${selectedClass} ${objectClass}`} onMouseDown={::this.handleGrab}>
+                {this.renderSkin()}
                 {this.renderCorners()}
             </div>
         );

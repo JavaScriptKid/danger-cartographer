@@ -31,6 +31,20 @@ const store = createStore({
                 fill4: null
             }
         },
+        "objectA": {
+            x: 3,
+            y: 3,
+            width: 1,
+            height: 2,
+            type: "object",
+            skin: {
+                id: "table",
+                fill1: "#8B572A",
+                fill2: null,
+                fill3: null,
+                fill4: null
+            }
+        },
         "xyz13": {
             x: 2,
             y: 1,

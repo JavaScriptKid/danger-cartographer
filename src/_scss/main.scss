@@ -13,12 +13,21 @@
     z-index:10;
     /* position is absolute (inline-style) */
 
+
     &.selected-placement {
         z-index:11;
         border: 2px solid cyan;
         animation: selected-glow 1s infinite;
         animation-direction: alternate;
     }
+
+    &.object-placement {
+        z-index:20;
+        &.selected-placement {
+            z-index:21;
+        }
+    }
+
 
     svg {
         display:block;
