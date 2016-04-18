@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import Inspector from '../inspector/inspector'
 import DeselectBtn from '../inspector/deselect-btn'
 import FillSelect from '../inspector/fill-select'
+import TypeMenu from './context-type-menu'
 
 @connect((state, props) => {
     return {
@@ -17,10 +18,10 @@ class ContextMenu extends React.Component {
 
         const model = this.props.landscapePlacements[this.props.selectedElement];
 
-        if (model.type == "object") { /* This should be renamed ASAP to Structure */
+        if (model.type == "structure") { /* This should be renamed ASAP to Structure */
             return (
                 <div>
-                    Object form
+                    Structure form
                     <div>SKIN:</div>
                     <FillSelect />
                 </div>
@@ -28,12 +29,16 @@ class ContextMenu extends React.Component {
         }
 
         if (model.type == "object") {
-            /*
-                <div>SKIN:</div>
-                <div>nudgeX:</div>
-                <div>nudgeY:</div>
-                <FillSelect /> -with Limited colors
-             */
+            //TODO: limited colors prop for FillSelect
+            return (
+                <div>
+                    Object form
+                    <div>SKIN:</div>
+                    <div>NUDGE LEFT:</div>
+                    <div>NUDGE TOP:</div>
+                    <FillSelect />
+                </div>
+            )
         }
 
 
@@ -63,6 +68,7 @@ class ContextMenu extends React.Component {
            <div>
                <Inspector />
                <DeselectBtn />
+               <TypeMenu />
                {this.renderContextControls()}
            </div>
         );

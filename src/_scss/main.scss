@@ -28,10 +28,17 @@
         animation-direction: alternate;
     }
 
-    &.object-placement {
+    &.structure-placement {
         z-index:20;
         &.selected-placement {
             z-index:21;
+        }
+    }
+
+    &.object-placement {
+        z-index:30;
+        &.selected-placement {
+            z-index:31;
         }
     }
 

@@ -23,6 +23,7 @@ const store = createStore({
             y: 0,
             width: 6,
             height: 1,
+            type: null,
             skin: {
                 id: "rectangle",
                 fill1: "#BD10E0",
@@ -36,7 +37,7 @@ const store = createStore({
             y: 3,
             width: 1, //Must be this size
             height: 2, //Must be this size
-            type: "object",
+            type: "structure",
             skin: {
                 id: "sidetable",
                 fill1: "#8B572A",
@@ -50,7 +51,7 @@ const store = createStore({
             y: 5,
             width: 2, //Must be this size
             height: 2, //Must be this size
-            type: "object",
+            type: "structure",
             skin: {
                 id: "fulltable",
                 fill1: "#8B572A",
@@ -64,7 +65,7 @@ const store = createStore({
             y: 1,
             width: 4, //Must be this size
             height: 8, //Must be this size
-            type: "object",
+            type: "structure",
             skin: {
                 id: "building",
                 fill1: "rgb(167, 78, 63)",
@@ -78,7 +79,7 @@ const store = createStore({
             y: 1,
             width: 4, //Must be this size
             height: 8, //Must be this size
-            type: "object",
+            type: "structure",
             skin: {
                 id: "building",
                 fill1: "rgb(167, 78, 63)",
@@ -107,6 +108,7 @@ const store = createStore({
             y: 1,
             width: 4,
             height: 3,
+            type: null,
             skin: {
                 id: "rectangle",
                 fill1: "#50E3C2",
@@ -116,26 +118,6 @@ const store = createStore({
             }
         }
     }
-    //objects: {
-    //    "2x1": {
-    //        skin: "colorBlock",
-    //        width: 2,
-    //        height: 2,
-    //        backgroundColor: "#6A808B"
-    //    }
-    //}
-    //cells: {
-    //    "2x2": {},
-    //    "2x3": {},
-    //    "2x4": {},
-    //    "5x2": {}
-    //},
-    /* Let any of these be placeable! */
-    //objects: {
-    //    wall: {
-    //
-    //    }
-    //}
 });
 
 export default store;

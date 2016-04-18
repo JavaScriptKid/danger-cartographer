@@ -6,6 +6,7 @@ export default function(options={}, setAsActive=true) {
         y:0,
         width: 1,
         height: 1,
+        type: null,
         ...options,
         skin: {
             id: "rectangle",

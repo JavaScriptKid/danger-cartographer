@@ -116,13 +116,13 @@ class LandscapePlacement extends React.Component {
 
 
     renderCorners() {
-        //OTHER CORNERS ARE `NICE TO HAVE`
 
-        /* Dont allow resize for Objects */
-        if (this.props.model.type == "object") {
+        /* Dont allow resize for Objects or Structures */
+        if (this.props.model.type == "object" || this.props.model.type == "structure") {
             return null;
         }
 
+        //OTHER CORNERS ARE `NICE TO HAVE`
         return (
             <div className="placement-corners-container">
                 {/*<PlacementCorner placementId={this.props.id} corner={["top", "left"]} class="js-placement-corner placement-corner-top-left" />*/}
@@ -136,7 +136,6 @@ class LandscapePlacement extends React.Component {
     renderSkin() {
         const width = (this.props.model.width * this.props.cellSize);
         const height = (this.props.model.height * this.props.cellSize);
-
 
         if (this.props.model.skin.id == "rectangle") {
             return rectangle(width, height, this.props.model.skin.fill1);
@@ -173,12 +172,13 @@ class LandscapePlacement extends React.Component {
         };
 
         const selectedClass = this.props.isSelectedElement ? "selected-placement" : "";
+        const structureClass = this.props.model.type == "structure" ? "structure-placement" : "";
         const objectClass = this.props.model.type == "object" ? "object-placement" : "";
 
 
 
         return (
-            <div style={style} className={`landscape-placement ${selectedClass} ${objectClass}`} onMouseDown={::this.handleGrab}>
+            <div style={style} className={`landscape-placement ${selectedClass} ${objectClass} ${structureClass}`} onMouseDown={::this.handleGrab}>
                 {this.renderSkin()}
                 {this.renderCorners()}
             </div>

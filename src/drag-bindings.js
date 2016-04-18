@@ -39,7 +39,9 @@ export function startLandscapeDragBindings() {
     $(document).on('keydown', function(e) {
         if (e.keyCode == 27 || e.keyCode == 8) {
             e.preventDefault();
-            deletePlacement( store.getState().cursor.selectedElement )
+            const elementIdToDelete = store.getState().cursor.selectedElement;
+            setCursorValue( {selectedElement: null })
+            deletePlacement( elementIdToDelete )
         }
     })
 }
