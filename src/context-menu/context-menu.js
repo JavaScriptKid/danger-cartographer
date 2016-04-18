@@ -2,8 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Inspector from '../inspector/inspector'
 import DeselectBtn from '../inspector/deselect-btn'
-import FillSelect from '../inspector/fill-select'
+import FillSelect from './fill-select'
 import TypeMenu from './context-type-menu'
+import SkinDropdown from './skin-dropdown'
 
 @connect((state, props) => {
     return {
@@ -19,16 +20,28 @@ class ContextMenu extends React.Component {
         const model = this.props.landscapePlacements[this.props.selectedElement];
 
         if (model.type == "structure") { /* This should be renamed ASAP to Structure */
+
+            const options = [
+                {value: "sidetable", label: "Side Table", width: 1, height: 2},
+                {value: "fulltable", label: "Full Table", width: 2, height: 2},
+                {value: "building", label: "Building", width: 4, height: 8} /* It would be better if it didnt have to manually know these numbers */
+            ]
+
             return (
                 <div>
                     Structure form
-                    <div>SKIN:</div>
+                    <SkinDropdown options={options} />
                     <FillSelect />
                 </div>
             )
         }
 
         if (model.type == "object") {
+
+            const options = [
+                {value: "coffeeCup", label: "Coffee Cup"}
+            ]
+
             //TODO: limited colors prop for FillSelect
             return (
                 <div>

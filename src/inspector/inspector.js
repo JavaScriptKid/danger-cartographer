@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import FillSelect from './fill-select'
+import FillSelect from './../context-menu/fill-select'
 
 @connect((state, props) => {
     return {
