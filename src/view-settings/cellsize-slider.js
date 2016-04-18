@@ -12,7 +12,7 @@ class CellSizeSlider extends React.Component {
 
     handleChange() {
         setViewSettingsValue({
-            cellSize: this.refs.slider.value
+            cellSize: parseInt(this.refs.slider.value)
         })
 
     }

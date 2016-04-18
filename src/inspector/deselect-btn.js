@@ -9,7 +9,8 @@ import {setCursorValue} from '../action-creators/action-creators'
 
 class DeselectBtn extends React.Component {
 
-    handleClick() {
+    handleClick(e) {
+        e.preventDefault()
         setCursorValue({
             selectedElement: null
         })
@@ -18,7 +19,7 @@ class DeselectBtn extends React.Component {
 
     render() {
         return (
-           <button onClick={::this.handleClick}>Deselect</button>
+           <a className="context-menu_close" href="#" onClick={::this.handleClick}>&times;</a>
         );
     }
 }

@@ -4,7 +4,9 @@
 
 @import 'reset';
 
-
+body {
+    font-family: 'Source Code Pro', monospace;
+}
 
 .svg-viewer-container {
     svg {
@@ -72,3 +74,5 @@
     .placement-corner-bottom-left { bottom:0; left:0; }
     .placement-corner-bottom-right{ bottom:0; right:0; }
 }
+
+@import 'context-menu';

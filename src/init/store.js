@@ -32,20 +32,20 @@ const store = createStore({
         //        fill4: null
         //    }
         //},
-        //"objectA": {
-        //    x: 1,
-        //    y: 3,
-        //    width: 1, //Must be this size
-        //    height: 2, //Must be this size
-        //    type: "structure",
-        //    skin: {
-        //        id: "sidetable",
-        //        fill1: "#8B572A",
-        //        fill2: null,
-        //        fill3: null,
-        //        fill4: null
-        //    }
-        //},
+        "objectA": {
+            x: 1,
+            y: 3,
+            width: 1, //Must be this size
+            height: 2, //Must be this size
+            type: "structure",
+            skin: {
+                id: "sidetable",
+                fill1: "#8B572A",
+                fill2: null,
+                fill3: null,
+                fill4: null
+            }
+        },
         //"objectB": {
         //    x: 3,
         //    y: 5,

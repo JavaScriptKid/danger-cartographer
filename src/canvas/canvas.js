@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Cell from './canvas-cell'
 import LandscapeContainer from './canvas-landscapes-container'
+import ContextMenu from '../context-menu/context-menu'
 
 @connect((state, props) => {
     return {
@@ -33,6 +34,7 @@ class Canvas extends React.Component {
            <div style={canvasStyle}>
                <LandscapeContainer />
                {cells}
+               <ContextMenu />
            </div>
         );
     }

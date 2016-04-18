@@ -37,12 +37,20 @@ export function startLandscapeDragBindings() {
     });
 
     $(document).on('keydown', function(e) {
-        if (e.keyCode == 27 || e.keyCode == 8) {
+        /* ESC - Backspace - delete a placement */
+        if (e.keyCode == 8) {
             e.preventDefault();
             const elementIdToDelete = store.getState().cursor.selectedElement;
-            setCursorValue( {selectedElement: null })
+            setCursorValue( {selectedElement: null });
             deletePlacement( elementIdToDelete )
         }
+
+        /* ESC - deselect a placement */
+        if (e.keyCode == 27) {
+            e.preventDefault();
+            setCursorValue( {selectedElement: null });
+        }
+
     })
 }
 
