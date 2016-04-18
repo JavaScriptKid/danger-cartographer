@@ -24,8 +24,11 @@ class SvgViewer extends React.Component {
         });
 
         const rectangles = models.filter(model => {
-            return (model.type != "object") /* This should maybe be more specific if making more than 2 groups later */
-        }) ;
+            return (!model.type) /* This should maybe be more specific if making more than 2 groups later */
+        });
+        const structures = models.filter(model => {
+            return (model.type == "structure") /* This should maybe be more specific if making more than 2 groups later */
+        });
         const objects = models.filter(model => {
             return (model.type == "object") /* This should maybe be more specific if making more than 2 groups later */
         });
@@ -34,7 +37,7 @@ class SvgViewer extends React.Component {
 
 
 
-        const placements = [...rectangles, ...objects].map((model, i) => {
+        const placements = [...rectangles, ...structures, ...objects].map((model, i) => {
 
 
             const width = model.width * 16;
