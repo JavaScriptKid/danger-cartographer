@@ -16,8 +16,8 @@ class Canvas extends React.Component {
     render() {
 
         var cells = [];
-        for (var y=0; y<=this.props.height; y++) {
-            for (var x = 0; x <= this.props.width; x++) {
+        for (var y=0; y<=this.props.height-1; y++) {
+            for (var x = 0; x <= this.props.width-1; x++) {
                 cells.push(<Cell key={`${x}x${y}`} x={x} y={y}/>)
             }
         }
