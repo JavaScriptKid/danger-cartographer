@@ -13,16 +13,15 @@ class Inspector extends React.Component {
 
     render() {
 
-        if (!this.props.selectedElement) {
-            return null;
-        }
+        /*
+         <div>
+         Fill Color: <FillSelect />
+         </div>
+         */
 
         return (
            <div>
                Selected Element: {this.props.selectedElement}
-               <div>
-                   Fill Color: <FillSelect />
-               </div>
            </div>
         );
     }
