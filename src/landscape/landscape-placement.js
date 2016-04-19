@@ -103,6 +103,7 @@ class LandscapePlacement extends React.Component {
         /* select placement */
         setCursorValue({
             selectedElement: this.props.id,
+            showCreateMenu: false,
 
             isDragging: true,
             draggingId: this.props.id,

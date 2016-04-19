@@ -2,12 +2,12 @@ import createStore from './create-store'
 
 const store = createStore({
     details: {
-        width: 5,
-        height: 5
+        width: 10,
+        height: 10
         //backgroundUrl: ""
     },
     viewSettings: {
-        cellSize: 50,//50
+        cellSize: 40,//50
     },
     cursor: {
         selectedElement: null,
@@ -15,7 +15,10 @@ const store = createStore({
         xStart: null,
         yStart: null,
         xDistance: null,
-        yDistance: null
+        yDistance: null,
+        lastChosenX: 0,
+        lastChosenY: 0,
+        showCreateMenu: false
     },
     landscapePlacements: {
         //"xyz12": {

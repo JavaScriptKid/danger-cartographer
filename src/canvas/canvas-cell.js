@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { setCursorValue } from '../action-creators/action-creators'
-import createPlacement from '../landscape/create-placement'
+
 
 
 @connect((state, props) => {
@@ -23,11 +23,18 @@ class Cell extends React.Component {
     }
 
     handleDoubleClick() {
-        createPlacement({
-            x: this.props.x,
-            y: this.props.y
+
+        setCursorValue({
+            selectedElement: null,
+            lastChosenX: this.props.x,
+            lastChosenY: this.props.y,
+            showCreateMenu: true
         });
-        /* Now set it to active */
+
+        //createPlacement({
+        //    x: this.props.x,
+        //    y: this.props.y
+        //});
 
     }
     render() {

@@ -86,9 +86,9 @@ class ContextMenu extends React.Component {
             //TODO: limited colors prop for FillSelectList
             return (
                 <div>
-                    <div>TODO SKIN:</div>
+                    {/*<div>TODO SKIN:</div>
                     <div>NUDGE LEFT:</div>
-                    <div>NUDGE TOP:</div>
+                    <div>NUDGE TOP:</div>*/}
                     <FillSelectList />
                 </div>
             )
@@ -137,7 +137,7 @@ class ContextMenu extends React.Component {
             position: "absolute",
             zIndex:100,
             left: model.x * this.props.cellSize + this.props.cellSize/2,
-            top: (model.y + model.height) * this.props.cellSize,
+            top: (model.y*this.props.cellSize + model.height*this.props.cellSize),
             transform: `translateX(-50%) translateY(${this.props.cellSize/4 + 14}px)`,
 
             //transform: `translate3d(-50%, ${this.props.cellSize + this.props.cellSize/2}px, 0)`,
