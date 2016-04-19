@@ -39,6 +39,11 @@ export function startLandscapeDragBindings() {
     $(document).on('keydown', function(e) {
         /* ESC - Backspace - delete a placement */
         if (e.keyCode == 8) {
+
+            if ($('input').is(':focus')) {
+                return;
+            }
+
             e.preventDefault();
             const elementIdToDelete = store.getState().cursor.selectedElement;
             setCursorValue( {selectedElement: null });

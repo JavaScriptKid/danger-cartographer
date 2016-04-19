@@ -26,8 +26,6 @@ class FillSelect extends React.Component {
         const currentFillColor = this.props.selectedLandscapePlacement ? this.props.selectedLandscapePlacement.skin.fill1 : null;
 
         return (
-            <div>
-                <label>Fill</label>
            <select value={currentFillColor} ref="colorselect" onChange={::this.handleChange}>
                <option value="#D0021B">red</option>
                <option value="#4A90E2">blue</option>
@@ -54,7 +52,6 @@ class FillSelect extends React.Component {
                <option value="#808080">SouthNorth Window Gray</option>
                <option value="#F0368A">SouthNorth Text Pink</option>
            </select>
-                </div>
         );
     }
 }

@@ -4,6 +4,8 @@ import DeselectBtn from '../inspector/deselect-btn'
 import FillSelect from './fill-select'
 import TypeMenu from './context-type-menu'
 import SkinDropdown from './skin-dropdown'
+import NumberInput from './number-input'
+
 
 @connect((state, props) => {
     return {
@@ -86,9 +88,30 @@ class ContextMenu extends React.Component {
         /* Default to landscape */
         return (
             <div>
-                <div>WIDTH: </div>
-                <div>HEIGHT: </div>
-                <FillSelect />
+                <div className="content-menu_row flex-side-by-side-row">
+                    <span>
+                        Width
+                    </span>
+                    <span className="mini-input-container">
+                        <NumberInput id={this.props.selectedElement} property="width" useMin={1} />
+                    </span>
+                </div>
+                <div className="content-menu_row flex-side-by-side-row">
+                    <span>
+                        Height
+                    </span>
+                    <span className="mini-input-container">
+                        <NumberInput id={this.props.selectedElement} property="height" useMin={1} />
+                    </span>
+                </div>
+                <div className="content-menu_row flex-side-by-side-row">
+                    <span>
+                        Fill
+                    </span>
+                    <span className="mini-input-container">
+                        <FillSelect />
+                    </span>
+                </div>
             </div>
         )
 

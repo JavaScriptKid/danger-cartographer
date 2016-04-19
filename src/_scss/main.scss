@@ -75,4 +75,14 @@ body {
     .placement-corner-bottom-right{ bottom:0; right:0; }
 }
 
+/* Flexy stuff */
+.flex-side-by-side-row {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+
 @import 'context-menu';

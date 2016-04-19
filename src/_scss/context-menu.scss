@@ -51,6 +51,26 @@ $coolDarkColor: #2A2F3A;
     .context-menu_selected-id {
         font-size: 0.8em;
         margin-bottom: 0.5em;
+    }
+
+    .content-menu_row {
+        padding: 0.3em 0;
+    }
+
+    input {
+        line-height: 20px;
+        padding-left:4px;
+        border: 1px solid #eee;
+        border-radius:2px;
+        outline: 0;
+    }
+}
+
+.mini-input-container {
+    input {
+        width: 50px;
+    }
+    select {
 
     }
 }
