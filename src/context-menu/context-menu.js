@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import DeselectBtn from '../inspector/deselect-btn'
-import FillSelect from './fill-select'
+import FillSelectList from './fill-select'
 import TypeMenu from './context-type-menu'
 import SkinDropdown from './skin-dropdown'
 import NumberInput from './number-input'
@@ -61,8 +61,18 @@ class ContextMenu extends React.Component {
 
             return (
                 <div>
-                    <SkinDropdown options={options} />
-                    <FillSelect />
+                    <div className="content-menu_row flex-side-by-side-row">
+                        <span>
+                            Skin
+                        </span>
+                        <span className="mini-input-container">
+                            <SkinDropdown options={options} />
+                        </span>
+                    </div>
+                    <div className="content-menu_row">
+                        <div>Fill</div>
+                        <FillSelectList />
+                    </div>
                 </div>
             )
         }
@@ -73,13 +83,13 @@ class ContextMenu extends React.Component {
                 {value: "coffeeCup", label: "Coffee Cup"}
             ];
 
-            //TODO: limited colors prop for FillSelect
+            //TODO: limited colors prop for FillSelectList
             return (
                 <div>
                     <div>TODO SKIN:</div>
                     <div>NUDGE LEFT:</div>
                     <div>NUDGE TOP:</div>
-                    <FillSelect />
+                    <FillSelectList />
                 </div>
             )
         }
@@ -104,13 +114,9 @@ class ContextMenu extends React.Component {
                         <NumberInput id={this.props.selectedElement} property="height" useMin={1} />
                     </span>
                 </div>
-                <div className="content-menu_row flex-side-by-side-row">
-                    <span>
-                        Fill
-                    </span>
-                    <span className="mini-input-container">
-                        <FillSelect />
-                    </span>
+                <div className="content-menu_row">
+                    <div>Fill</div>
+                    <FillSelectList />
                 </div>
             </div>
         )

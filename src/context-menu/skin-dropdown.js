@@ -41,12 +41,9 @@ class FillSelect extends React.Component {
         const currentSkinId = this.props.selectedLandscapePlacement ? this.props.selectedLandscapePlacement.skin.id : null;
 
         return (
-            <div>
-                <label>Skin</label>
-                <select value={currentSkinId} ref="skinselect" onChange={::this.handleChange}>
-                    {this.renderOptions()}
-                </select>
-            </div>
+            <select value={currentSkinId} ref="skinselect" onChange={::this.handleChange}>
+                {this.renderOptions()}
+            </select>
         );
     }
 }

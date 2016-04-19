@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { mergeLandscape } from '../action-creators/action-creators'
-
+import Colors from '../_data/colors'
 
 @connect((state, props) => {
     return {
@@ -11,12 +11,12 @@ import { mergeLandscape } from '../action-creators/action-creators'
     }
 })
 
-class FillSelect extends React.Component {
+class FillSelectList extends React.Component {
 
-    handleChange() {
+    handleOptionChange(newValue) {
         mergeLandscape(this.props.selectedElement, {
             skin: {
-                fill1:this.refs.colorselect.value
+                fill1:newValue
             }
         })
     }
@@ -25,35 +25,66 @@ class FillSelect extends React.Component {
 
         const currentFillColor = this.props.selectedLandscapePlacement ? this.props.selectedLandscapePlacement.skin.fill1 : null;
 
+        const colors = Object.keys(Colors).map(color => {
+            const model = Colors[color];
+            const isSelected = (model.hex == currentFillColor);
+            return (
+                <FillColorOption key={color} hex={model.hex} isSelected={isSelected} handleChange={::this.handleOptionChange} />
+            )
+        });
+
         return (
-           <select value={currentFillColor} ref="colorselect" onChange={::this.handleChange}>
-               <option value="#D0021B">red</option>
-               <option value="#4A90E2">blue</option>
-               <option value="#50E3C2">green</option>
-               <option value="#BD10E0">purple</option>
-               <option value="#8B5B55">1</option>
-               <option value="#4B586A">2</option>
-               <option value="#5994B1">3</option>
-               <option value="#574ACB">4</option>
-               <option value="#E8DCCD">5</option>
-               <option value="#B27D4D">Bronze Mug</option>
-               <option value="#647D82">Coffee Floor</option>
-               <option value="#8F5B56">Coffee Counter</option>
-               <option value="#C5A587">Coffee Floor</option>
-               <option value="#C2BBC0">Coffee Door Mat</option>
-               <option value="#BDC2C3">Street Gray</option>
-               <option value="#FBDC51">Roadblock Yellow</option>
-               <option value="#1B547E">Roof Dark Blue</option>
-               <option value="#AA6A69">Building Brick</option>
-               <option value="#3A8A54">The Hole Green</option>
-               <option value="#1D462B">The Hole Green (Dark)</option>
-               <option value="#A145DF">The Hole Text Purple</option>
-               <option value="#FFFFFF">SouthNorth White</option>
-               <option value="#808080">SouthNorth Window Gray</option>
-               <option value="#F0368A">SouthNorth Text Pink</option>
-           </select>
+            <div className="fills-container">
+                {colors}
+            </div>
         );
     }
 }
 
-export default FillSelect;
+class FillColorOption extends React.Component {
+
+    handleClick(e){
+        e.preventDefault();
+        this.props.handleChange(this.props.hex);
+    }
+
+    renderSelectedCheck(fill="#fff") {
+        return (
+            <svg viewBox="0 0 32 32" width={20}>
+                <path fill={fill} d="M27 4l-15 15-7-7-5 5 12 12 20-20z"></path>
+            </svg>
+        )
+    }
+
+    render() {
+        const colorBlobStyle = {
+            width: 30,
+            height: 30,
+            display: "block",
+            margin: "0 auto",
+            borderRadius: "50%",
+            background: this.props.hex,
+            position: "relative"
+
+        };
+
+        const checkStyle = {
+            position: "absolute",
+            display: "block",
+            left: "50%",
+            top: "50%",
+            marginLeft: -10,
+            marginTop: -10,
+        };
+
+        return (
+            <a className="fill-container_fill" href="#" onClick={::this.handleClick}>
+                <span style={colorBlobStyle}>
+                    {this.props.isSelected ? <span style={checkStyle}>{this.renderSelectedCheck()}</span> : null}
+                </span>
+            </a>
+        )
+    }
+}
+
+export default FillSelectList;

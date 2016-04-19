@@ -66,6 +66,21 @@ $coolDarkColor: #2A2F3A;
     }
 }
 
+/* Color Hex Fill Menu */
+.fills-container {
+    display:flex;
+    flex-wrap: wrap;
+    padding-top:0.5em;
+    .fill-container_fill {
+        width: 20%;
+        padding-bottom:0.5em;
+    }
+
+}
+
+
+
+
 .mini-input-container {
     input {
         width: 50px;
@@ -74,3 +89,4 @@ $coolDarkColor: #2A2F3A;
 
     }
 }
+
