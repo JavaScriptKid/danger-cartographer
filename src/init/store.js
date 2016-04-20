@@ -18,7 +18,7 @@ const store = createStore({
         yDistance: null,
         lastChosenX: 0,
         lastChosenY: 0,
-        showCreateMenu: false
+        selectedCreateTool: "landscape" //"landscape", "structure", "object"
     },
     landscapePlacements: {
         //"xyz12": {

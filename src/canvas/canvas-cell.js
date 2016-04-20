@@ -1,13 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { setCursorValue } from '../action-creators/action-creators'
+import {handleCreateObject, handleCreateLandscape, handleCreateStructure} from '../landscape/create-placement'
 
 
 
 @connect((state, props) => {
     return {
         cellSize: state.viewSettings.cellSize,
-        isDragging: state.cursor.isDragging
+        isDragging: state.cursor.isDragging,
+        selectedCreateTool: state.cursor.selectedCreateTool
     }
 })
 class Cell extends React.Component {
@@ -23,19 +25,15 @@ class Cell extends React.Component {
     }
 
     handleDoubleClick() {
-
-        setCursorValue({
-            selectedElement: null,
-            lastChosenX: this.props.x,
-            lastChosenY: this.props.y,
-            showCreateMenu: true
-        });
-
-        //createPlacement({
-        //    x: this.props.x,
-        //    y: this.props.y
-        //});
-
+        if (this.props.selectedCreateTool == "landscape") {
+            handleCreateLandscape(this.props.x, this.props.y);
+        }
+        if (this.props.selectedCreateTool == "structure") {
+            handleCreateStructure(this.props.x, this.props.y);
+        }
+        if (this.props.selectedCreateTool == "object") {
+            handleCreateObject(this.props.x, this.props.y);
+        }
     }
     render() {
         const cellStyle = {

@@ -100,21 +100,19 @@ class ContextMenu extends React.Component {
         /* Default to landscape */
         return (
             <div className="bottom-context-container">
-                <div className="content-menu_row flex-side-by-side-row">
-                    <span>
+                <div className="bottom-menu_areagroup">
+                    <div className="content-menu_row">
                         Width
-                    </span>
-                    <span className="mini-input-container">
-                        <NumberInput id={this.props.selectedElement} property="width" useMin={1} />
-                    </span>
-                </div>
-                <div className="content-menu_row flex-side-by-side-row">
-                    <span>
-                        Height
-                    </span>
-                    <span className="mini-input-container">
-                        <NumberInput id={this.props.selectedElement} property="height" useMin={1} />
-                    </span>
+                        <div className="mini-input-container">
+                            <NumberInput id={this.props.selectedElement} property="width" useMin={1} />
+                        </div>
+                    </div>
+                    <div className="content-menu_row">
+                            Height
+                        <div className="mini-input-container">
+                            <NumberInput id={this.props.selectedElement} property="height" useMin={1} />
+                        </div>
+                    </div>
                 </div>
                 <div className="content-menu_row">
                     <div>Fill</div>
