@@ -19,11 +19,7 @@ class CellSizeSlider extends React.Component {
 
     render() {
         return (
-           <div>
-               Cell Size
                <input type="range" ref="slider" value={this.props.cellSize} onChange={::this.handleChange} max={100} min={16} step={2} />
-               {this.props.cellSize}
-           </div>
         );
     }
 }

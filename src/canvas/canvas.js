@@ -28,7 +28,9 @@ class Canvas extends React.Component {
             width: this.props.width * this.props.cellSize,
             height: this.props.height * this.props.cellSize,
             position:"relative",
-            margin: "0 auto"
+            margin: "0 auto",
+            borderLeft: "1px solid rgb(204, 204, 204)",
+            borderTop: "1px solid rgb(204, 204, 204)"
         };
 
         return (

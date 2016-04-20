@@ -1,0 +1,68 @@
+.bottom-menu {
+
+    color:#fff;
+
+    position:fixed;
+    bottom: 0;
+    left: 0;
+    right:0;
+    min-height: 130px;
+    z-index: 200;
+
+    .bottom-menu_left-area {
+        padding: 15px;
+        display:flex;
+        background: rgba(#2A2F3A, 0.9);
+    }
+    .bottom-menu_right-area {
+        padding: 15px;
+        display:flex;
+        background: rgba(#262C2E, 0.9);
+    }
+
+    .bottom-menu_label {
+        padding-bottom:1em;
+    }
+}
+
+.bottom-menu_areagroup {
+
+    &:not(:first-of-type) {padding-left:20px;}
+    padding-right:20px;
+}
+
+
+.tool-option {
+        display:flex;
+        color: #fff;
+        text-decoration: none;
+
+        &:not(:last-of-type) {
+            padding-bottom:1em;
+        }
+
+        &.is-selected {
+            .tool-option_bubble {
+                border-color: #fff;
+                &:after {
+                    content: '';
+                    position: absolute;
+                    left: 2px; right: 2px;
+                    top:2px; bottom:2px;
+                    background:#fff;
+                }
+            }
+        }
+
+        .tool-option_bubble {
+            display: block;
+            position:relative;
+            width:21px;
+            height:21px;
+            border:2px solid #E8E8E8;
+            margin-right:5px;
+        }
+        .tool-option_label {
+
+        }
+}

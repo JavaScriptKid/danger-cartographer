@@ -39,7 +39,7 @@ class Cell extends React.Component {
     }
     render() {
         const cellStyle = {
-            background: '#ddd',
+            background: '#FFF',
             width: this.props.cellSize,
             height: this.props.cellSize,
             left: ((this.props.x) * this.props.cellSize),
