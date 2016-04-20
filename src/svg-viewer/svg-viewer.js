@@ -85,7 +85,7 @@ class SvgViewer extends React.Component {
         };
 
         return (
-            <div>
+            <div className="js-deselect-click">
 
                 {/*<MarkupBtn />*/}
 
