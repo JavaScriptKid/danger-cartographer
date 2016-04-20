@@ -81,12 +81,13 @@ class SvgViewer extends React.Component {
         const containerStyle = {
             width: this.props.mapWidthInPx,
             height: this.props.mapHeightInPx,
+            opacity: 0
         };
 
         return (
             <div>
 
-                <MarkupBtn />
+                {/*<MarkupBtn />*/}
 
                 <div className="svg-viewer-container" style={containerStyle}>
                     <svg id="map-svg" x="0" y="0" viewBox={`0 0 ${this.props.mapWidthInPx} ${this.props.mapHeightInPx}`}  xmlns="http://www.w3.org/2000/svg">

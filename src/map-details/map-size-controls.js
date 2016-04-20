@@ -24,10 +24,9 @@ class MapSizeControls extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="map-size-controls">
                 <label>Width</label>
                 <input onChange={::this.handleChangeWidth} value={this.props.width} type="number" ref="widthinput" min={1} />
-                <br />
                 <label>Height</label>
                 <input onChange={::this.handleChangeHeight} value={this.props.height} type="number" ref="heightinput" min={1} />
             </div>
