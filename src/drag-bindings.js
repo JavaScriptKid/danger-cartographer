@@ -57,6 +57,13 @@ export function startLandscapeDragBindings() {
         }
 
     })
+
+    $(document).on('click', function(e) {
+        if ( $(e.target).hasClass('js-deselect-click')) {
+            setCursorValue( {selectedElement: null });
+        }
+    });
+
 }
 
 export function removeLandscapeDragBindings() {
