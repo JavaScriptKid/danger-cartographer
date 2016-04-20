@@ -7,7 +7,7 @@ const store = createStore({
         //backgroundUrl: ""
     },
     viewSettings: {
-        cellSize: 40,//50
+        cellSize: 20,//50
     },
     cursor: {
         selectedElement: null,

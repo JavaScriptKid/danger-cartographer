@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import ToolMenu from './tool-menu'
 import CellSizeSlider from '../view-settings/cellsize-slider'
+import ContextMenu from '../context-menu/context-menu'
 
 @connect((state, props) => {
     return {
@@ -25,11 +26,10 @@ class BottomMenu extends React.Component {
                        <div>
                            <CellSizeSlider />
                        </div>
-
                    </div>
                </div>
                <div className="bottom-menu_right-area">
-                   Yo
+                   <ContextMenu />
                </div>
            </div>
         );

@@ -50,7 +50,7 @@ class FillColorOption extends React.Component {
 
     renderSelectedCheck(fill="#fff") {
         return (
-            <svg viewBox="0 0 32 32" width={20}>
+            <svg viewBox="0 0 32 32" width={18}>
                 <path fill={fill} d="M27 4l-15 15-7-7-5 5 12 12 20-20z"></path>
             </svg>
         )
@@ -58,8 +58,8 @@ class FillColorOption extends React.Component {
 
     render() {
         const colorBlobStyle = {
-            width: 30,
-            height: 30,
+            width: 26,
+            height: 26,
             display: "block",
             margin: "0 auto",
             borderRadius: "50%",
@@ -73,8 +73,8 @@ class FillColorOption extends React.Component {
             display: "block",
             left: "50%",
             top: "50%",
-            marginLeft: -10,
-            marginTop: -10,
+            marginLeft: -9,
+            marginTop: -9,
         };
 
         return (

@@ -64,16 +64,14 @@ class ContextMenu extends React.Component {
             ];
 
             return (
-                <div>
-                    <div className="content-menu_row flex-side-by-side-row">
-                        <span>
-                            Skin
-                        </span>
-                        <span className="mini-input-container">
+                <div className="bottom-context-container">
+                    <div className="bottom-menu_areagroup">
+                        <div>Skin</div>
+                        <div className="mini-input-container">
                             <SkinDropdown options={options} />
-                        </span>
+                        </div>
                     </div>
-                    <div className="content-menu_row">
+                    <div className="bottom-menu_areagroup">
                         <div>Fill</div>
                         <FillSelectList />
                     </div>
@@ -89,7 +87,7 @@ class ContextMenu extends React.Component {
 
             //TODO: limited colors prop for FillSelectList
             return (
-                <div>
+                <div className="bottom-context-container">
                     {/*<div>TODO SKIN:</div>
                     <div>NUDGE LEFT:</div>
                     <div>NUDGE TOP:</div>*/}
@@ -101,7 +99,7 @@ class ContextMenu extends React.Component {
 
         /* Default to landscape */
         return (
-            <div>
+            <div className="bottom-context-container">
                 <div className="content-menu_row flex-side-by-side-row">
                     <span>
                         Width
@@ -137,27 +135,28 @@ class ContextMenu extends React.Component {
 
         const model = this.props.landscapePlacements[this.props.selectedElement];
 
-        const style = {
-            position: "absolute",
-            zIndex:100,
-            left: model.x * this.props.cellSize + this.props.cellSize/2,
-            top: (model.y*this.props.cellSize + model.height*this.props.cellSize),
-            transform: `translateX(-50%) translateY(${this.props.cellSize/4 + 14}px)`,
-
-            //transform: `translate3d(-50%, ${this.props.cellSize + this.props.cellSize/2}px, 0)`,
-        };
+        //const style = {
+        //    position: "absolute",
+        //    zIndex:100,
+        //    left: model.x * this.props.cellSize + this.props.cellSize/2,
+        //    top: (model.y*this.props.cellSize + model.height*this.props.cellSize),
+        //    transform: `translateX(-50%) translateY(${this.props.cellSize/4 + 14}px)`,
+        //
+        //    //transform: `translate3d(-50%, ${this.props.cellSize + this.props.cellSize/2}px, 0)`,
+        //};
 
 
         return (
-           <div style={style} className="context-menu">
+           <div className="context-menu">
                <DeselectBtn />
-               <div className="context-menu_title">{this.getPlacementType(model.type)}</div>
-               <div className={`context-menu_selected-id ${this.getIdClass(model.type)}`}>{this.props.selectedElement}</div>
+               <div className="context-menu_title bottom-menu_label">
+                   Selected {this.getPlacementType(model.type)}:
+                   <span className={`context-menu_selected-id ${this.getIdClass(model.type)}`}>
+                       {this.props.selectedElement}
+                   </span>
+               </div>
 
-
-
-               {/*<TypeMenu />*/}
-               {this.renderContextControls(model)}
+                    {this.renderContextControls(model)}
            </div>
         );
     }

@@ -3,6 +3,8 @@
     color:#fff;
 
     position:fixed;
+    display:flex;
+
     bottom: 0;
     left: 0;
     right:0;
@@ -13,11 +15,16 @@
         padding: 15px;
         display:flex;
         background: rgba(#2A2F3A, 0.9);
+        border-right: 1px solid rgba(white, 0.1);
     }
     .bottom-menu_right-area {
         padding: 15px;
         display:flex;
         background: rgba(#262C2E, 0.9);
+        flex-grow:1;
+    }
+    .bottom-context-container {
+        display:flex;
     }
 
     .bottom-menu_label {
