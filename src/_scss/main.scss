@@ -26,9 +26,16 @@ body {
 
     &.selected-placement {
         z-index:11;
-        border: 2px solid cyan;
-        animation: selected-glow 1s infinite;
-        animation-direction: alternate;
+        &:after {
+            pointer-events: none;
+            content: '';
+            position:absolute;
+            display:block;
+            top:0;right:0;left:0;bottom:0;
+            border: 2px solid cyan;
+            animation: selected-glow 1s infinite;
+            animation-direction: alternate;
+        }
     }
 
     &.structure-placement {

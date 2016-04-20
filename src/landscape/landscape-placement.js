@@ -123,9 +123,14 @@ class LandscapePlacement extends React.Component {
             return null;
         }
 
+        const style = {
+            width: this.props.model.width * this.props.cellSize,
+            height: this.props.model.height * this.props.cellSize
+        };
+
         //OTHER CORNERS ARE `NICE TO HAVE`
         return (
-            <div className="placement-corners-container">
+            <div style={style} className="placement-corners-container">
                 {/*<PlacementCorner placementId={this.props.id} corner={["top", "left"]} class="js-placement-corner placement-corner-top-left" />*/}
                 {/*<PlacementCorner placementId={this.props.id} corner={["top", "right"]} class="js-placement-corner placement-corner-top-right" />*/}
                 {/*<PlacementCorner placementId={this.props.id} corner={["bottom", "left"]} class="js-placement-corner placement-corner-bottom-left" />*/}
@@ -166,9 +171,9 @@ class LandscapePlacement extends React.Component {
             position: "absolute",
             pointerEvents: this.props.isDragging ? "none" : "all",
             left: model.x * this.props.cellSize,
-            top: model.y * this.props.cellSize
-            //width: model.width * this.props.cellSize,
-            //height: model.height * this.props.cellSize
+            top: model.y * this.props.cellSize,
+            width: model.width * this.props.cellSize,
+            height: model.height * this.props.cellSize
             //transform: `translate3d(${this.props.xDistance}px, ${this.props.yDistance}px, 0)`
         };
 
