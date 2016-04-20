@@ -20,6 +20,10 @@ import NumberInput from './number-input'
 
 class ContextMenu extends React.Component {
 
+    handleHeightChange(newValue) {
+
+    }
+
     getIdClass(type) {
         if (type == "object") {
             return "_color-pink"

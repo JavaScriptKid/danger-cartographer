@@ -1,5 +1,15 @@
 import store from '../init/store'
 
+export function setDetailsValue(changes={}) {
+    store.dispatch({
+        type: "SET_DETAILS_VALUE",
+        payload: {
+            changes: {...changes}
+        }
+    });
+}
+
+
 export function setViewSettingsValue(changes={}) {
     store.dispatch({
         type: "SET_VIEW_SETTINGS_VALUE",
