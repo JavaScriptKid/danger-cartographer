@@ -18,7 +18,8 @@ const store = createStore({
         yDistance: null,
         lastChosenX: 0,
         lastChosenY: 0,
-        selectedCreateTool: "landscape" //"landscape", "structure", "object"
+        selectedCreateTool: "landscape", //"landscape", "structure", "object",
+        useStructure: "fulltable"
     },
     landscapePlacements: {
         //"xyz12": {

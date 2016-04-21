@@ -1,6 +1,8 @@
 import {mergeLandscape, setCursorValue} from '../action-creators/action-creators'
+import store from '../init/store'
+import Structure from '../_data/structures'
 
-export function createPlacement(options={}, setAsActive=true) {
+export function mergePlacement(options={}, setAsActive=true) {
     const useOptions = {
         x:0,
         y:0,
@@ -26,36 +28,37 @@ export function createPlacement(options={}, setAsActive=true) {
 }
 
 export function handleCreateLandscape(x,y) {
-    createPlacement({
+    mergePlacement({
         x: x,
         y: y,
         width: 1,
         height: 1,
         skin: {
             id: "rectangle",
-            fill1: "#b4da55",
+            fill1: "#50E3C2",
         }
     });
     setCursorValue({showCreateMenu:false})
 }
 
 export function handleCreateStructure(x,y) {
-    createPlacement({
+
+    const structure = Structure[store.getState().cursor.useStructure];
+
+    if (!structure) {
+        console.warn('Structure not found in handleCreateStructure:',store.getState().cursor.useStructure );
+        return;
+    }
+
+    mergePlacement({
         x: x,
         y: y,
-        width: 1,
-        height: 2,
-        type: "structure",
-        skin: {
-            id: "sidetable",
-            fill1: "#8B5B55",
-        }
+        ...structure
     });
-    setCursorValue({showCreateMenu:false})
 }
 
 export function handleCreateObject(x,y) {
-    createPlacement({
+    mergePlacement({
         x: x,
         y: y,
         width: 1,
@@ -67,4 +70,19 @@ export function handleCreateObject(x,y) {
         }
     });
     setCursorValue({showCreateMenu:false})
+}
+
+export default function createPlacement(x,y) {
+
+    const selectedCreateTool = store.getState().cursor.selectedCreateTool
+
+    if (selectedCreateTool == "landscape") {
+        handleCreateLandscape(x, y);
+    }
+    if (selectedCreateTool == "structure") {
+        handleCreateStructure(x, y);
+    }
+    if (selectedCreateTool == "object") {
+        handleCreateObject(x, y);
+    }
 }

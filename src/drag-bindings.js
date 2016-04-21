@@ -1,5 +1,6 @@
 import store from './init/store'
 import {setCursorValue, deletePlacement} from './action-creators/action-creators'
+import createPlacement from './landscape/create-placement'
 
 export function startLandscapeDragBindings() {
 
@@ -64,10 +65,16 @@ export function startLandscapeDragBindings() {
         }
     });
 
+    /* Create new when double clicking on an existing placement */
     $(document).on('dblclick', function(e) {
         //console.log('dbl', e.target)
         if ( $(e.target).hasClass('js-canvas')) {
-            console.log('DOUBLE CLICK')
+            const cellSize = store.getState().viewSettings.cellSize;
+            const x = Math.floor(e.offsetX / cellSize);
+            const y = Math.floor(e.offsetY / cellSize);
+
+            //console.log(x,y);
+            createPlacement(x, y);
         }
     });
 

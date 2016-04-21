@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { setCursorValue } from '../action-creators/action-creators'
-import {handleCreateObject, handleCreateLandscape, handleCreateStructure} from '../landscape/create-placement'
+import createPlacement from '../landscape/create-placement'
 
 
 
@@ -25,15 +25,7 @@ class Cell extends React.Component {
     }
 
     handleDoubleClick() {
-        if (this.props.selectedCreateTool == "landscape") {
-            handleCreateLandscape(this.props.x, this.props.y);
-        }
-        if (this.props.selectedCreateTool == "structure") {
-            handleCreateStructure(this.props.x, this.props.y);
-        }
-        if (this.props.selectedCreateTool == "object") {
-            handleCreateObject(this.props.x, this.props.y);
-        }
+        createPlacement(this.props.x, this.props.y)
     }
     render() {
         const cellStyle = {

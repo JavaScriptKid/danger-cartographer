@@ -1,10 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { mergeLandscape } from '../action-creators/action-creators'
-
+import { mergeLandscape, setCursorValue } from '../action-creators/action-creators'
 
 @connect((state, props) => {
     return {
+        selectedCreateTool: state.cursor.selectedCreateTool,
         selectedElement: state.cursor.selectedElement,
         selectedLandscapePlacement: state.landscapePlacements[state.cursor.selectedElement]
     }
@@ -19,9 +19,18 @@ class FillSelect extends React.Component {
             height: optionModel.height,
             width: optionModel.width,
             skin: {
-                id: optionModel.value,
+                id: optionModel.value
             }
-        })
+        });
+
+        ///* Remember this structure */
+        if (this.props.selectedCreateTool == "structure") {
+            setCursorValue({
+                useStructure: optionModel.value
+            })
+        }
+        /* Needs to remember whole object */
+
     }
 
 
