@@ -13,7 +13,8 @@ class ToolMenu extends React.Component {
 
     setActive(newValue) {
         setCursorValue({
-            selectedCreateTool: newValue
+            selectedCreateTool: newValue,
+            selectedElement: null
         })
     }
 

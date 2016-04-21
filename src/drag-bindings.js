@@ -56,12 +56,18 @@ export function startLandscapeDragBindings() {
             setCursorValue( {selectedElement: null });
         }
 
-    })
+    });
 
     $(document).on('click', function(e) {
-        console.log(e.target)
         if ( $(e.target).hasClass('js-deselect-click')) {
             setCursorValue( {selectedElement: null });
+        }
+    });
+
+    $(document).on('dblclick', function(e) {
+        //console.log('dbl', e.target)
+        if ( $(e.target).hasClass('js-canvas')) {
+            console.log('DOUBLE CLICK')
         }
     });
 

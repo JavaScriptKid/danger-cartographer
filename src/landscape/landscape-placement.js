@@ -111,8 +111,8 @@ class LandscapePlacement extends React.Component {
         })
     }
 
-    handleDoubleClick() {
-        console.log('click')
+    handleDoubleClick(e) {
+        console.log('dblclick', e)
     }
 
 
