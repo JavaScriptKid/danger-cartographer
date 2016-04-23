@@ -19,6 +19,7 @@ class App extends React.Component {
         startLandscapeDragBindings();
     }
 
+
     render() {
         return (
            <div className="js-deselect-click">

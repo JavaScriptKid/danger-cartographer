@@ -1,3 +1,6 @@
+import Shapes from './shapes'
+console.log(Shapes)
+
 export default {
     "sidetable": {
         width: 1,
