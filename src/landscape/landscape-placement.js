@@ -1,7 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import {rectangle, sidetable, fullTable, building, coffeeCup} from '../skins/skins'
+//import {rectangle, sidetable, fullTable, building, coffeeCup} from '../skins/skins'
+
+import Shapes from '../_data/shapes'
+
 import PlacementCorner from './placement-corner'
 
 import {setCursorValue, mergeLandscape} from '../action-creators/action-creators'
@@ -142,26 +145,13 @@ class LandscapePlacement extends React.Component {
     renderSkin() {
         const width = (this.props.model.width * this.props.cellSize);
         const height = (this.props.model.height * this.props.cellSize);
+        const shape = Shapes.shapes[this.props.model.skin.id];
 
-        if (this.props.model.skin.id == "rectangle") {
-            return rectangle(width, height, this.props.model.skin.fill1);
+        if (!shape) {
+            console.warn('Could not locate', `"${this.props.model.skin.id}"`, 'within Shapes' );
+            return null
         }
-
-        if (this.props.model.skin.id == "sidetable") {
-            return sidetable(this.props.cellSize, width, height, this.props.model.skin.fill1);
-        }
-
-        if (this.props.model.skin.id == "fulltable") {
-            return fullTable(this.props.cellSize, width, height, this.props.model.skin.fill1);
-        }
-
-        if (this.props.model.skin.id == "building") {
-            return building(this.props.cellSize, width, height, this.props.model.skin.fill1);
-        }
-
-        if (this.props.model.skin.id == "coffeeCup") {
-            return coffeeCup(this.props.cellSize, width, height, this.props.model.skin.fill1);
-        }
+        return shape.shapeMarkup(this.props.cellSize, width, height, this.props.model.skin.fill1)
     }
 
     render() {

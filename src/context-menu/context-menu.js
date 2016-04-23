@@ -5,7 +5,8 @@ import FillSelectList from './fill-select'
 import TypeMenu from './context-type-menu'
 import SkinDropdown from './skin-dropdown'
 import NumberInput from './number-input'
-import Structures from '../_data/structures'
+//import Structures from '../_data/structures'
+import Shapes from '../_data/shapes'
 
 
 @connect((state, props) => {
@@ -58,17 +59,15 @@ class ContextMenu extends React.Component {
 
         if (model.type == "structure") { /* This should be renamed ASAP to Structure */
 
-            //const options = [
-            //    {value: "sidetable", label: "Side Table", width: 1, height: 2},
-            //    {value: "fulltable", label: "Full Table", width: 2, height: 2},
-            //    {value: "building", label: "Building", width: 4, height: 8} /* It would be better if it didnt have to manually know these numbers */
-            //];
-            const options = Object.keys(Structures).map(structure => {
+
+            const structures = Shapes.getStructures();
+            const options = Object.keys(structures).map(structure => {
+                const model = structures[structure];
                 return {
                     value: structure,
                     label: structure,
-                    width: Structures[structure].width,
-                    height: Structures[structure].height
+                    width: model.shapeDetails.width,
+                    height: model.shapeDetails.height
                 }
             });
 

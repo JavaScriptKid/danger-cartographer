@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import MarkupBtn from './markup-btn'
-
+import Shapes from '../_data/shapes'
 //Lets get ugly for a second
-import {rectangle, sidetable, fullTable, building, coffeeCup} from '../skins/skins'
+//import {rectangle, sidetable, fullTable, building, coffeeCup} from '../skins/skins'
 
 
 @connect((state, props) => {
@@ -17,6 +17,7 @@ import {rectangle, sidetable, fullTable, building, coffeeCup} from '../skins/ski
 class SvgViewer extends React.Component {
 
     render() {
+
 
         /* Sort by Objects and Rectangles */
         const models = Object.keys(this.props.landscapePlacements).map(p => {
@@ -44,26 +45,32 @@ class SvgViewer extends React.Component {
             const height = model.height * 16;
 
 
-            var skinSvg = null;
-            if (model.skin.id == "rectangle") {
-                skinSvg = rectangle(width, height, model.skin.fill1);
+            const shape = Shapes.shapes[model.skin.id];
+            if (!shape) {
+                console.warn('Could not locate', `"${this.props.model.skin.id}"`, 'within Shapes (svg-viewer)' );
+                return null
             }
+            var skinSvg = shape.shapeMarkup(16, width, height, model.skin.fill1);
 
-            if (model.skin.id == "sidetable") {
-                skinSvg = sidetable(16, width, height, model.skin.fill1);
-            }
-
-            if (model.skin.id == "fulltable") {
-                skinSvg = fullTable(16, width, height, model.skin.fill1);
-            }
-
-            if (model.skin.id == "building") {
-                skinSvg = building(16, width, height, model.skin.fill1);
-            }
-
-            if (model.skin.id == "coffeeCup") {
-                skinSvg = coffeeCup(16, width, height, model.skin.fill1);
-            }
+            //if (model.skin.id == "rectangle") {
+            //    skinSvg = rectangle(width, height, model.skin.fill1);
+            //}
+            //
+            //if (model.skin.id == "sidetable") {
+            //    skinSvg = sidetable(16, width, height, model.skin.fill1);
+            //}
+            //
+            //if (model.skin.id == "fulltable") {
+            //    skinSvg = fullTable(16, width, height, model.skin.fill1);
+            //}
+            //
+            //if (model.skin.id == "building") {
+            //    skinSvg = building(16, width, height, model.skin.fill1);
+            //}
+            //
+            //if (model.skin.id == "coffeeCup") {
+            //    skinSvg = coffeeCup(16, width, height, model.skin.fill1);
+            //}
 
             const style = {
                 position: 'relative',

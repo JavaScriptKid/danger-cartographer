@@ -1,6 +1,8 @@
 import {mergeLandscape, setCursorValue} from '../action-creators/action-creators'
 import store from '../init/store'
-import Structure from '../_data/structures'
+//import Structure from '../_data/structures'
+import Shapes from '../_data/shapes'
+
 
 export function mergePlacement(options={}, setAsActive=true) {
     const useOptions = {
@@ -43,7 +45,8 @@ export function handleCreateLandscape(x,y) {
 
 export function handleCreateStructure(x,y) {
 
-    const structure = Structure[store.getState().cursor.useStructure];
+    //const structure = Structure[store.getState().cursor.useStructure];
+    const structure = Shapes.shapes[store.getState().cursor.useStructure]
 
     if (!structure) {
         console.warn('Structure not found in handleCreateStructure:',store.getState().cursor.useStructure );
@@ -53,7 +56,8 @@ export function handleCreateStructure(x,y) {
     mergePlacement({
         x: x,
         y: y,
-        ...structure
+        type: "structure",
+        ...structure.shapeDetails
     });
 }
 
