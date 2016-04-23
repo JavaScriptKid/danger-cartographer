@@ -69,7 +69,7 @@ export function handleCreateObject(x,y) {
         height: 1,
         type: "object",
         skin: {
-            id: "coffeeCup",
+            id: "coffeecup",
             fill1: "#B27D4D",
         }
     });

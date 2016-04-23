@@ -47,7 +47,7 @@ var Shapes = {
 
 
 
-/* Populate Shapes with stuff from the directories */
+/* Populate structures with stuff from the `structures` directory */
 var req = require.context("./structures", true, /^(.*\.(js$))[^.]*$/igm);
 req.keys().forEach(function(key){
 
@@ -69,5 +69,29 @@ req.keys().forEach(function(key){
         type: "structure"
     };
 });
+
+/* Populate structures with stuff from the `structures` directory */
+var req = require.context("./objects", true, /^(.*\.(js$))[^.]*$/igm);
+req.keys().forEach(function(key){
+
+    const structure = req(key);
+    const keyName = key.replace('./', '').replace('.js', '');
+
+    Shapes.shapes[keyName] = {
+        shapeDetails: {
+            width: 0,
+            height: 0,
+            ...structure.shapeDetails, /* Merge in the real values */
+
+            skin: {
+                id: keyName,
+                fill1: "red"
+            }
+        },
+        shapeMarkup: structure.shapeMarkup,
+        type: "object"
+    };
+});
+
 
 export default Shapes
