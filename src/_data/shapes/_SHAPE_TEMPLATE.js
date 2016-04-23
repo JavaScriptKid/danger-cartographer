@@ -4,8 +4,10 @@
         Objects -> Usually hand drawn. Coffee cups, cash registers, etc
     2. Fill out the correct values for shapeWidth and shapeHeight
     3. Paste the contents of your SVG, not including the top level SVG tag
-    4. Replace fill="whatever" to `fill={fill1}`
-        Do not add any comments in your SVG, because React will turn them into <spans> and the export won't work right.
+    4. Inject variables into the SVG
+        - Replace fill="whatever" to `fill={fill1}`
+        - Do not add any comments in your SVG, because React will turn them into <spans> and the export won't work right.
+        - Remove any react-ids in your SVG
     5. Delete this block of comments
  */
 
