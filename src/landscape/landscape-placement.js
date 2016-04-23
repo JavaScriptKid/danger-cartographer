@@ -1,12 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-//import {rectangle, sidetable, fullTable, building, coffeeCup} from '../skins/skins'
-
+import store from '../init/store'
 import Shapes from '../_data/shapes'
-
 import PlacementCorner from './placement-corner'
-
 import {setCursorValue, mergeLandscape} from '../action-creators/action-creators'
 
 @connect((state, props) => {
@@ -30,6 +27,36 @@ import {setCursorValue, mergeLandscape} from '../action-creators/action-creators
 
 class LandscapePlacement extends React.Component {
 
+    constructor(props) {
+        super();
+        this.domId = "placement_dom_id_"+props.id;
+    }
+
+    componentWillUpdate(newProps) {
+        if (this.props.cellSize != newProps.cellSize) {
+            //$(`#${this.domId}`).draggable({})
+            console.log('UPDATE');
+            $(`#${this.domId}`).draggable("option", "grid", [newProps.cellSize, newProps.cellSize])
+        }
+    }
+
+    componentDidMount() {
+        var self = this;
+        $(`#${this.domId}`).draggable({
+
+            cancel : '.js-placement-corner',
+            grid: [20,20],
+            stop(e) {
+                var el = $(this)[0];
+                mergeLandscape(self.props.id, {
+                    x: el.offsetLeft / store.getState().viewSettings.cellSize,
+                    y: el.offsetTop / store.getState().viewSettings.cellSize
+                })
+                //console.log(el.offsetLeft / store.getState().viewSettings.cellSize)
+            }
+        });
+    }
+
 
     componentWillReceiveProps(newProps) {
         if (newProps.isSelectedDragging) {
@@ -38,37 +65,37 @@ class LandscapePlacement extends React.Component {
             /* THIS IS A GRAB */
             if (!newProps.dragCorner.length) {
 
-                if (newProps.xDistance >= this.props.cellSize) {
-                    setCursorValue({ xDistance: 0, xStart: newProps.xStart + newProps.xDistance });
-                    mergeLandscape(this.props.id, {
-                        x: newProps.model.x+1
-                    });
-                    return;
-                }
+                //if (newProps.xDistance >= this.props.cellSize) {
+                //    setCursorValue({ xDistance: 0, xStart: newProps.xStart + newProps.xDistance });
+                //    mergeLandscape(this.props.id, {
+                //        x: newProps.model.x+1
+                //    });
+                //    return;
+                //}
 
-                if (newProps.xDistance <= -this.props.cellSize) {
-                    setCursorValue({ xDistance: 0, xStart: newProps.xStart + newProps.xDistance });
-                    mergeLandscape(this.props.id, {
-                        x: (newProps.model.x>0) ? newProps.model.x-1: 0
-                    });
-                    return;
-                }
-
-                if (newProps.yDistance >= this.props.cellSize) {
-                    setCursorValue({ yDistance: 0, yStart: newProps.yStart + newProps.yDistance });
-                    mergeLandscape(this.props.id, {
-                        y: newProps.model.y+1
-                    });
-                    return;
-                }
-
-                if (newProps.yDistance <= -this.props.cellSize) {
-                    setCursorValue({ yDistance: 0, yStart: newProps.yStart + newProps.yDistance });
-                    mergeLandscape(this.props.id, {
-                        y: (newProps.model.y>0) ? newProps.model.y-1 : 0
-                    });
-                    return;
-                }
+                //if (newProps.xDistance <= -this.props.cellSize) {
+                //    setCursorValue({ xDistance: 0, xStart: newProps.xStart + newProps.xDistance });
+                //    mergeLandscape(this.props.id, {
+                //        x: (newProps.model.x>0) ? newProps.model.x-1: 0
+                //    });
+                //    return;
+                //}
+                //
+                //if (newProps.yDistance >= this.props.cellSize) {
+                //    setCursorValue({ yDistance: 0, yStart: newProps.yStart + newProps.yDistance });
+                //    mergeLandscape(this.props.id, {
+                //        y: newProps.model.y+1
+                //    });
+                //    return;
+                //}
+                //
+                //if (newProps.yDistance <= -this.props.cellSize) {
+                //    setCursorValue({ yDistance: 0, yStart: newProps.yStart + newProps.yDistance });
+                //    mergeLandscape(this.props.id, {
+                //        y: (newProps.model.y>0) ? newProps.model.y-1 : 0
+                //    });
+                //    return;
+                //}
 
                 return;
             }
@@ -100,6 +127,9 @@ class LandscapePlacement extends React.Component {
             }
         }
     }
+
+
+
 
     handleGrab() {
 
@@ -174,7 +204,7 @@ class LandscapePlacement extends React.Component {
 
 
         return (
-            <div style={style} className={`landscape-placement ${selectedClass} ${objectClass} ${structureClass}`} onMouseDown={::this.handleGrab}>
+            <div id={this.domId} style={style} className={`landscape-placement ${selectedClass} ${objectClass} ${structureClass}`} onMouseDown={::this.handleGrab}>
                 {this.renderSkin()}
                 {this.renderCorners()}
             </div>
