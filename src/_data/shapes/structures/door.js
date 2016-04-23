@@ -11,6 +11,7 @@ export default {
     shapeMarkup: function(cellSize, width, height, fill1) {
         return (
             <svg viewBox={`0 0 ${16*shapeWidth} ${16*shapeHeight}`}  width={width} height={height}>
+                <rect fill={fill1} x="0" y="0" width="16" height="16"></rect>
                 <polygon points="0,0 0,16 2,16 2,2 14,2 14,16" />
                 <polygon points="0,0 2,2 14,2 16,0" />
             </svg>
