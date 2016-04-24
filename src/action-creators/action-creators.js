@@ -9,6 +9,15 @@ export function setDetailsValue(changes={}) {
     });
 }
 
+export function setUserValue(changes={}) {
+    store.dispatch({
+        type: "SET_USER_VALUE",
+        payload: {
+            changes: {...changes}
+        }
+    });
+}
+
 
 export function setViewSettingsValue(changes={}) {
     store.dispatch({

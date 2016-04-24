@@ -27,7 +27,18 @@
         border:0;
         line-height:24px;
         padding-left:8px;
-        border-left:4px solid #50E3C2;
+        border-left:4px solid #4A90E2;
+    }
+
+    input[type=submit] {
+        background: #4A90E2;
+        color:#fff;
+        font-family: "Source Code Pro", monospace;
+        border:0;
+        margin-top:0.5em;
+        border-bottom:3px solid darken(#4A90E2, 10%);
+        padding: 0.6em 1.4em;
+
     }
 }
 .login-form_error-text {

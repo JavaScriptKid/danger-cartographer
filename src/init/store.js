@@ -8,6 +8,7 @@ const store = createStore({
     },
     user: {
         isLoggedIn: false,
+        firebaseUrl: "https://dangerstudio-stage.firebaseio.com",
         userEmail: null //populated on signIn
     },
     viewSettings: {
