@@ -6,6 +6,10 @@ const store = createStore({
         height: 10
         //backgroundUrl: ""
     },
+    user: {
+        isLoggedIn: false,
+        userEmail: null //populated on signIn
+    },
     viewSettings: {
         cellSize: 20,//50
     },

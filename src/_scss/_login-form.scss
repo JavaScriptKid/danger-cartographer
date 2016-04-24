@@ -1,0 +1,36 @@
+.login-form {
+    width:320px;
+    background:#232323;
+    color:#fff;
+    margin: 0 auto;
+    padding: 1em;
+    border-bottom:5px solid #000;
+}
+.login-form_title {
+    font-size: 1.4em;
+    text-transform: uppercase;
+    margin-bottom:0.5em;
+}
+.login-form_field {
+    margin-bottom: 0.6em;
+    label {
+        display:block; margin-bottom:0.3em;
+    }
+    input[type=email],
+    input[type=password]
+    {
+        width:100%;
+        background:lighten(#222, 24%);
+        color:#fff;
+        font-family: "Source Code Pro", monospace;
+        outline: 0;
+        border:0;
+        line-height:24px;
+        padding-left:8px;
+        border-left:4px solid #50E3C2;
+    }
+}
+.login-form_error-text {
+    color: #EC4257;
+    font-size:0.7em;
+}

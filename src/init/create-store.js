@@ -4,6 +4,7 @@ import * as detailsReducer from '../redux-reducers/details-reducer'
 import * as viewSettingsReducer from '../redux-reducers/view-settings-reducer'
 import * as landscapePlacementsReducer from '../redux-reducers/landscape-placements-reducer'
 import * as cursorReducer from '../redux-reducers/cursor-reducer'
+import * as userReducer from '../redux-reducers/user-reducer'
 
 export default function(data) {
     var reducer = combineReducers({
@@ -12,6 +13,7 @@ export default function(data) {
         ...viewSettingsReducer,
         ...landscapePlacementsReducer,
         ...cursorReducer,
+        ...userReducer
     });
 
     var store = createStore(reducer, data,
