@@ -8,6 +8,7 @@ import BottomMenu from './bottom-menu/bottom-menu'
 import TopTitleArea from './map-details/top-title-area'
 import LoginForm from './user/login-form'
 import {setUserValue} from './action-creators/action-creators'
+import getGraphicIdFromUrl from './user/get-graphic-id-from-url'
 
 @connect((state, props) => {
     return {
@@ -27,6 +28,12 @@ class App extends React.Component {
     }
 
     componentWillMount() {
+
+        /* Know the desired URL */
+        setUserValue({
+            viewingMap: getGraphicIdFromUrl(window.location.search)
+        });
+
         /* Bind window level mouse interactions */
         startLandscapeDragBindings();
 
