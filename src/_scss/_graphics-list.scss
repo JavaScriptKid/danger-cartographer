@@ -1,0 +1,32 @@
+.graphics-list_container {
+    display:flex;
+    padding:1em;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.graphics-list_result {
+    text-decoration: none;
+    width:200px;
+    height:240px;
+    box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.50);
+    position:relative;
+}
+
+.graphics-list_meta {
+    position:absolute;
+    left:0; right:0;
+    bottom:0;
+    background:#222;
+    color:#fff;
+    padding:0.5em;
+    height: 70px;
+}
+
+.graphics-list_resulttitle {
+    margin-bottom: 0.5em;
+}
+.graphics-list_id {
+    font-size:0.8em;
+    color: #ddd;
+}

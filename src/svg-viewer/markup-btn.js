@@ -16,7 +16,7 @@ class MarkupBtn extends React.Component {
         $markup.prepend("<style>svg {overflow:visible}</style>");
 
         var w = window.open();
-        var html = String($markup[0].outerHTML);
+        var html = String($markup[0].outerHTML.replace(/reactid/g, "oldreactid"));
         $(w.document.body).text(html);
 
 
