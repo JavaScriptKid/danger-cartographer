@@ -1,14 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Canvas from './canvas/canvas'
 import {startLandscapeDragBindings} from './drag-bindings'
 import ReduxStateDisplayer from './redux-state-displayer'
-import SvgViewer from './svg-viewer/svg-viewer'
-import BottomMenu from './bottom-menu/bottom-menu'
-import TopTitleArea from './map-details/top-title-area'
 import LoginForm from './user/login-form'
 import {setUserValue} from './action-creators/action-creators'
 import getGraphicIdFromUrl from './user/get-graphic-id-from-url'
+import GraphicsList from './graphics-list/graphics-list'
+import EditorApp from './editor-app'
+
 
 @connect((state, props) => {
     return {
@@ -25,14 +24,10 @@ class App extends React.Component {
         this.state = {
             isLoading: true
         }
+        this.graphicId = getGraphicIdFromUrl(window.location.search)
     }
 
     componentWillMount() {
-
-        /* Know the desired URL */
-        setUserValue({
-            viewingMap: getGraphicIdFromUrl(window.location.search)
-        });
 
         /* Bind window level mouse interactions */
         startLandscapeDragBindings();
@@ -73,14 +68,17 @@ class App extends React.Component {
         );
     }
 
-    renderApp() {
+    renderListApp() {
         return (
-            <div className="js-deselect-click">
-                <TopTitleArea />
-                <Canvas />
-                <BottomMenu />
-                <SvgViewer />
+            <div>
+                <GraphicsList />
             </div>
+        );
+    }
+
+    renderEditorApp() {
+        return (
+            <EditorApp graphicId={this.graphicId} />
         );
     }
 
@@ -89,7 +87,11 @@ class App extends React.Component {
             return this.renderLoading()
         }
         if (this.props.isLoggedIn) {
-            return this.renderApp()
+            if (this.graphicId) {
+                return this.renderEditorApp()
+            } else {
+                return this.renderListApp()
+            }
         } else {
             return this.renderLoginWall()
         }

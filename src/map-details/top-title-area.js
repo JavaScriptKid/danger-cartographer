@@ -15,6 +15,7 @@ class TopTitleArea extends React.Component {
     render() {
         return (
            <div className="top-area">
+               <a href="/">Back</a>
                <MapTitle />
                <MapSizeControls />
                <TopToolMenu />
