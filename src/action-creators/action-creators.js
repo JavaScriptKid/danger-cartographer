@@ -1,4 +1,6 @@
 import store from '../init/store'
+import updateFirebase from '../firebase/update-to-firebase'
+/* the Firebase thing might be a little impure, but I'm trying it anyway */
 
 export function setDetailsValue(changes={}) {
     store.dispatch({
@@ -7,6 +9,8 @@ export function setDetailsValue(changes={}) {
             changes: {...changes}
         }
     });
+
+    updateFirebase();
 }
 
 export function setUserValue(changes={}) {
@@ -46,6 +50,7 @@ export function mergeLandscape(id="", changes={}) {
             changes: {...changes}
         }
     });
+    updateFirebase();
 }
 
 export function deletePlacement(id="") {
@@ -55,4 +60,5 @@ export function deletePlacement(id="") {
             key: id,
         }
     });
+    updateFirebase();
 }

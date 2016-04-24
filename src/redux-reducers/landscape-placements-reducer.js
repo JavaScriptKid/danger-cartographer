@@ -11,6 +11,11 @@ export function landscapePlacements(state = {}, action) {
         case "REMOVE_LANDSCAPE":
             return removeNode(state, action.payload.key);
 
+        case "SET_ALL_LANDSCAPES": /* INCOMING FIREBASE UPDATE */
+            return {
+                ...action.payload /* NOTE: not a merge. */
+            };
+
         default:
             return state;
     }

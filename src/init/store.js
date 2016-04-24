@@ -1,5 +1,8 @@
 import createStore from './create-store'
 
+
+const firebaseUrl = (window.location.hostname == "localhost") ? "https://dangerstudio-stage.firebaseio.com" : "https://dangerstudio.firebaseio.com";
+
 const store = createStore({
     details: {
         width: 10,
@@ -8,7 +11,8 @@ const store = createStore({
     },
     user: {
         isLoggedIn: false,
-        firebaseUrl: "https://dangerstudio-stage.firebaseio.com",
+        viewingGraphic: null,
+        firebaseUrl: firebaseUrl,
         userEmail: null //populated on signIn
     },
     viewSettings: {

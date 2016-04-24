@@ -13,12 +13,12 @@ class MapSizeControls extends React.Component {
 
     handleChangeWidth() {
         setDetailsValue({
-            width: this.refs.widthinput.value
+            width: parseInt(this.refs.widthinput.value)
         })
     }
     handleChangeHeight() {
         setDetailsValue({
-            height: this.refs.heightinput.value
+            height: parseInt(this.refs.heightinput.value)
         })
     }
 
