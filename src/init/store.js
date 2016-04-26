@@ -5,6 +5,7 @@ const firebaseUrl = (window.location.hostname == "localhost") ? "https://dangers
 
 const store = createStore({
     details: {
+        title: "Some Cool Title",
         width: 10,
         height: 10
         //backgroundUrl: ""

@@ -13,9 +13,12 @@ import TopToolMenu from './top-tool-menu'
 class TopTitleArea extends React.Component {
 
     render() {
+
+        const backHref = `http://${window.location.host}${window.location.pathname}`
+
         return (
            <div className="top-area">
-               <a href="/">Back</a>
+               <a href={backHref}>Back</a>
                <MapTitle />
                <MapSizeControls />
                <TopToolMenu />

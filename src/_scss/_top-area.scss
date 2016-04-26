@@ -11,6 +11,24 @@ $darkTitleBackground:#212121;
     color:#fff;
     font-size: 1.2em;
     padding: 0.6em;
+    padding-right:1.7em;
+    position:relative;
+
+    &:hover {
+        cursor: pointer;
+        color: lighten(#50E3C2, 17%);
+        .map-title_edit-icon {
+            opacity: 1;
+        }
+    }
+
+    .map-title_edit-icon {
+        opacity:0;
+        position:absolute;
+        right:4px;
+        top:10px;
+        display:block;
+    }
 }
 
 .map-size-controls {
