@@ -4,12 +4,55 @@ import GraphicResult from './graphic-result'
 
 @connect((state, props) => {
     return {
+        firebaseUrl: state.user.firebaseUrl
     }
 })
 
 class GraphicsList extends React.Component {
 
+    constructor() {
+        super();
+
+        this.state = {
+            graphicsList: [],
+            isLoading: true
+        }
+    }
+
+    componentWillMount() {
+        var self = this;
+        const firebaseRef = this.props.firebaseUrl + '/graphics';
+        var graphicRef = new Firebase(firebaseRef);
+        graphicRef.once('value', function(snapshot) {
+
+            const graphics = snapshot.val();
+            const results = Object.keys( graphics ).map(graphicId => {
+                const model = graphics[graphicId];
+                return {
+                    id: graphicId,
+                    title: model.details.title,
+                    svg: '<svg></svg>'
+                }
+            });
+
+            self.setState({
+                isLoading: false,
+                graphicsList: results
+            })
+        });
+    }
+
+    renderLoading() {
+        return (
+            <div>LOADING FROM FIREBASE</div>
+        )
+    }
+
     render() {
+
+        if (this.state.isLoading) {
+            return this.renderLoading()
+        }
 
         const fakeDataList = [
             {
@@ -34,7 +77,7 @@ class GraphicsList extends React.Component {
             },
         ];
 
-        const results = fakeDataList.map(result => {
+        const results = this.state.graphicsList.map(result => {
             return <GraphicResult key={result.id} id={result.id} title={result.title} svgPreview={result.svgPreview} />
         });
 

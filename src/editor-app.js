@@ -16,21 +16,44 @@ import applyUpdateFromFirebase from './firebase/apply-update-from-firebase'
 })
 class EditorApp extends React.Component {
 
+    constructor() {
+        super();
+        this.state = {
+            isLoading: true
+        }
+    }
+
     componentWillMount() {
         setUserValue({
             viewingGraphic: this.props.graphicId
         });
 
+        var self = this;
         /* Listen for changes from Firebase */
         const firebaseRef = this.props.firebaseUrl + '/graphics/' + this.props.graphicId;
         var graphicRef = new Firebase(firebaseRef);
         graphicRef.on('value', function(snapshot) {
-            applyUpdateFromFirebase(snapshot.val())
-        })
+            applyUpdateFromFirebase(snapshot.val());
+            self.setState({
+                isLoading:false
+            })
+        });
+
 
     }
 
+    renderLoading() {
+        return (
+            <div>LOADING FROM FIREBASE</div>
+        )
+    }
+
     render() {
+
+        if (this.state.isLoading) {
+            return this.renderLoading()
+        }
+
         return (
             <div className="js-deselect-click">
                 <TopTitleArea />
