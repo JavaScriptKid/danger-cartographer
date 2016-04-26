@@ -29,6 +29,15 @@ $darkTitleBackground:#212121;
         top:10px;
         display:block;
     }
+    .map-title_input {
+        background: #454545;
+        color: #fff;
+        font-family: "Source Code Pro", monospace;
+        outline: 0;
+        border: 0;
+        font-size: 0.8em;
+        padding-left: 4px;
+    }
 }
 
 .map-size-controls {

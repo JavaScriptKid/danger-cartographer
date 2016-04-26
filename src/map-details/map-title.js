@@ -63,6 +63,7 @@ class MapTitle extends React.Component {
                 <input value={this.props.title}
                        type="text"
                        ref="input"
+                       className="map-title_input"
                        autoFocus={true}
                        onChange={::this.handleInputChange}
                        onKeyDown={::this.handleEndingKey}
