@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import MapTitle from './map-title'
 import MapSizeControls from '../map-details/map-size-controls'
 import MarkupBtn from '../svg-viewer/markup-btn'
+import GetWallsBtn from '../exporting/get-walls-btn'
 import TopToolMenu from './top-tool-menu'
 
 @connect((state, props) => {
@@ -24,6 +25,7 @@ class TopTitleArea extends React.Component {
                <TopToolMenu />
                <div>
                     <MarkupBtn />
+                    <GetWallsBtn />
                </div>
            </div>
         );
